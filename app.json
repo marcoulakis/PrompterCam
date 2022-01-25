@@ -1,0 +1,33 @@
+{
+  "expo": {
+    "name": "Camera   ",
+    "slug": "camera-da-haru",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "updates": {
+      "fallbackToCacheTimeout": 0
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/icon.png",
+        "backgroundColor": "#000"
+      },
+      "package": "marina.haru.camera"
+    },
+    "web": {
+      "favicon": "./assets/icon.png"
+    }
+  }
+}
