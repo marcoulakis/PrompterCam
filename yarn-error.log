@@ -1,5 +1,5 @@
 Arguments: 
-  /usr/bin/node /usr/local/bin/yarn add @types/expo-cameraroll
+  /usr/local/bin/node /usr/local/bin/yarnpkg add expo-camerA
 
 PATH: 
   /usr/local/sbin:/usr/sbin:/sbin:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games:/snap/bin:/home/marcoulakis/.dotnet/tools
@@ -8,23 +8,23 @@ Yarn version:
   1.22.17
 
 Node version: 
-  12.22.7
+  16.14.0
 
 Platform: 
   linux x64
 
 Trace: 
-  Error: https://registry.yarnpkg.com/@types%2fexpo-cameraroll: Not found
+  Error: https://registry.yarnpkg.com/expo-camerA: Not found
       at Request.params.callback [as _callback] (/usr/local/lib/node_modules/yarn/lib/cli.js:67029:18)
       at Request.self.callback (/usr/local/lib/node_modules/yarn/lib/cli.js:140883:22)
-      at Request.emit (events.js:314:20)
+      at Request.emit (node:events:520:28)
       at Request.<anonymous> (/usr/local/lib/node_modules/yarn/lib/cli.js:141855:10)
-      at Request.emit (events.js:314:20)
+      at Request.emit (node:events:520:28)
       at IncomingMessage.<anonymous> (/usr/local/lib/node_modules/yarn/lib/cli.js:141777:12)
-      at Object.onceWrapper (events.js:420:28)
-      at IncomingMessage.emit (events.js:326:22)
-      at endReadableNT (_stream_readable.js:1241:12)
-      at processTicksAndRejections (internal/process/task_queues.js:84:21)
+      at Object.onceWrapper (node:events:639:28)
+      at IncomingMessage.emit (node:events:532:35)
+      at endReadableNT (node:internal/streams/readable:1346:12)
+      at processTicksAndRejections (node:internal/process/task_queues:83:21)
 
 npm manifest: 
   {
@@ -38,6 +38,7 @@ npm manifest:
     },
     "dependencies": {
       "@react-native-async-storage/async-storage": "^1.15.15",
+      "@react-native-community/cameraroll": "^4.1.2",
       "@react-navigation/native": "^6.0.6",
       "@react-navigation/native-stack": "^6.2.5",
       "expo": "~44.0.0",
@@ -60,6 +61,7 @@ npm manifest:
       "react-dom": "17.0.1",
       "react-i18next": "^11.15.3",
       "react-native": "0.64.3",
+      "react-native-cn-richtext-editor": "^1.0.43",
       "react-native-confirmation-code-field": "^7.3.0",
       "react-native-elements": "^3.4.2",
       "react-native-internet-connection-alert": "^0.1.6",
@@ -1832,6 +1834,11 @@ Lockfile:
     dependencies:
       merge-options "^3.0.4"
   
+  "@react-native-community/cameraroll@^4.1.2":
+    version "4.1.2"
+    resolved "https://registry.yarnpkg.com/@react-native-community/cameraroll/-/cameraroll-4.1.2.tgz#489c6bb6137571540d93c543d5fcf8c652b548ec"
+    integrity sha512-jkdhMByMKD2CZ/5MPeBieYn8vkCfC4MOTouPpBpps3I8N6HUYJk+1JnDdktVYl2WINnqXpQptDA2YptVyifYAg==
+  
   "@react-native-community/cli-debugger-ui@^5.0.1":
     version "5.0.1"
     resolved "https://registry.yarnpkg.com/@react-native-community/cli-debugger-ui/-/cli-debugger-ui-5.0.1.tgz#6b1f3367b8e5211e899983065ea2e72c1901d75f"
@@ -3037,6 +3044,11 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/destroy/-/destroy-1.0.4.tgz#978857442c44749e4206613e37946205826abd80"
     integrity sha1-l4hXRCxEdJ5CBmE+N5RiBYJqvYA=
   
+  diff-match-patch@^1.0.4:
+    version "1.0.5"
+    resolved "https://registry.yarnpkg.com/diff-match-patch/-/diff-match-patch-1.0.5.tgz#abb584d5f10cd1196dfc55aa03701592ae3f7b37"
+    integrity sha512-IayShXAgj/QMXgB0IWmKx+rOPuGMhqm5w6jvFxmVenXKIzRqTAAsbBPT3kWQeGANj3jGgvcvv4yK6SxqYmikgw==
+  
   ee-first@1.1.1:
     version "1.1.1"
     resolved "https://registry.yarnpkg.com/ee-first/-/ee-first-1.1.1.tgz#590c61156b0ae2f4f0255732a158b266bc56b21d"
@@ -3843,6 +3855,13 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/immediate/-/immediate-3.0.6.tgz#9db1dbd0faf8de6fbe0f5dd5e56bb606280de69b"
     integrity sha1-nbHb0Pr43m++D13V5Wu2BigN5ps=
   
+  immutability-helper@^2.8.1:
+    version "2.9.1"
+    resolved "https://registry.yarnpkg.com/immutability-helper/-/immutability-helper-2.9.1.tgz#71c423ba387e67b6c6ceba0650572f2a2a6727df"
+    integrity sha512-r/RmRG8xO06s/k+PIaif2r5rGc3j4Yhc01jSBfwPCXDLYZwp/yxralI37Df1mwmuzcCsen/E/ITKcTEvc1PQmQ==
+    dependencies:
+      invariant "^2.2.0"
+  
   import-fresh@^2.0.0:
     version "2.0.0"
     resolved "https://registry.yarnpkg.com/import-fresh/-/import-fresh-2.0.0.tgz#d81355c15612d386c61f9ddd3922d4304822a546"
@@ -3881,7 +3900,7 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/interpret/-/interpret-1.4.0.tgz#665ab8bc4da27a774a40584e812e3e0fa45b1a1e"
     integrity sha512-agE4QfB2Lkp9uICn7BAqoscw4SZP9kTE2hxiFI3jBPmXJfdqiahTbUuKGsMoN2GtqL9AxhYioAcVvgsb1HvRbA==
   
-  invariant@^2.2.2, invariant@^2.2.4:
+  invariant@^2.2.0, invariant@^2.2.2, invariant@^2.2.4:
     version "2.2.4"
     resolved "https://registry.yarnpkg.com/invariant/-/invariant-2.2.4.tgz#610f3c92c9359ce1db616e538008d23ff35158e6"
     integrity sha512-phJfQVBuaJM5raOpJjSfkiD6BpbCE4Ns//LaXl6wGYtUBY83nWS6Rf9tXm2e8VaK60JEjYldbPif/A2B1C2gNA==
@@ -4891,6 +4910,11 @@ Lockfile:
       object-assign "^4.0.1"
       thenify-all "^1.0.0"
   
+  nanoid@^2.1.0:
+    version "2.1.11"
+    resolved "https://registry.yarnpkg.com/nanoid/-/nanoid-2.1.11.tgz#ec24b8a758d591561531b4176a01e3ab4f0f0280"
+    integrity sha512-s/snB+WGm6uwi0WjsZdaVcuf3KJXlfGl2LcxgwkEwJF0D/BWzVWAZW/XY4bFaiR7s0Jk3FPvlnepg1H1b1UwlA==
+  
   nanoid@^3.1.23:
     version "3.2.0"
     resolved "https://registry.yarnpkg.com/nanoid/-/nanoid-3.2.0.tgz#62667522da6673971cca916a6d3eff3f415ff80c"
@@ -5486,6 +5510,17 @@ Lockfile:
     version "0.1.1"
     resolved "https://registry.yarnpkg.com/react-native-apple-header/-/react-native-apple-header-0.1.1.tgz#aa8bd7eb6b7f75626b7d7e6b348d79db670413b0"
     integrity sha512-olhk1icxbmX4p320+iE3NunTQOlqBHMxHp/HcQ3XiUpPzekLPhJKK0r5dZfp80LEdcdxnZKhJMJqq0FquIG/VQ==
+  
+  react-native-cn-richtext-editor@^1.0.43:
+    version "1.0.43"
+    resolved "https://registry.yarnpkg.com/react-native-cn-richtext-editor/-/react-native-cn-richtext-editor-1.0.43.tgz#f544c5b2f422299b5cda789ef84884a030e14c4c"
+    integrity sha512-CT7DP9Y1RmpY5I408anBEsSjnbJc+ejpnbDL5ZLOX0MUmajSWAqzhzj0Vj5sIWs7eXtys9E3sDNWlphKSqQi8A==
+    dependencies:
+      diff-match-patch "^1.0.4"
+      immutability-helper "^2.8.1"
+      lodash "^4.17.15"
+      shortid "^2.2.14"
+      xmldom "^0.1.27"
   
   react-native-codegen@^0.0.6:
     version "0.0.6"
@@ -6097,6 +6132,13 @@ Lockfile:
       glob "^7.0.0"
       interpret "^1.0.0"
       rechoir "^0.6.2"
+  
+  shortid@^2.2.14:
+    version "2.2.16"
+    resolved "https://registry.yarnpkg.com/shortid/-/shortid-2.2.16.tgz#b742b8f0cb96406fd391c76bfc18a67a57fe5608"
+    integrity sha512-Ugt+GIZqvGXCIItnsL+lvFJOiN7RYqlGy7QE41O3YC1xbNSeDGIRO7xg2JJXIAj1cAGnOeC1r7/T9pgrtQbv4g==
+    dependencies:
+      nanoid "^2.1.0"
   
   side-channel@^1.0.4:
     version "1.0.4"
@@ -6807,6 +6849,11 @@ Lockfile:
     integrity sha512-ruPC/fyPNck2BD1dpz0AZZyrEwMOrWTO5lDdIXS91rs3wtm4j+T8Rp2o+zoOYkkAxJTZRPOSnOGei1egoRmKMQ==
     dependencies:
       sax "^1.2.1"
+  
+  xmldom@^0.1.27:
+    version "0.1.31"
+    resolved "https://registry.yarnpkg.com/xmldom/-/xmldom-0.1.31.tgz#b76c9a1bd9f0a9737e5a72dc37231cf38375e2ff"
+    integrity sha512-yS2uJflVQs6n+CyjHoaBmVSqIDevTAWrzMmjG1Gc7h1qQ7uVozNhEPJAwZXWyGQ/Gafo3fCwrcaokezLPupVyQ==
   
   xtend@~4.0.1:
     version "4.0.2"

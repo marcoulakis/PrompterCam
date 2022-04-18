@@ -1,32 +1,49 @@
 import { StyleSheet, Text, TouchableOpacity, View, Image } from 'react-native';
 import React, { useEffect, useState} from 'react';
-import { Camera } from 'expo-camera'
-import { Audio } from 'expo-av'
-import  * as ImagePicker from 'expo-image-picker'
-import  * as MediaLibrary from 'expo-media-library'
+import { Camera } from 'expo-camera';
+import { Audio } from 'expo-av';
+import  * as ImagePicker from 'expo-image-picker';
+import  * as MediaLibrary from 'expo-media-library';
 import { useIsFocused } from '@react-navigation/native';
 import { Icon } from 'react-native-elements';
+import * as ScreenOrientation from "expo-screen-orientation";
+import PrompterContainer from "./PrompterContainer"
 
 const CameraScreen = () => {
 
-  const [cameraIsPermitted, setCameraIsPermitted ] = useState(false)
-  const [audioIsPermitted, setAudioIsPermitted ] = useState(false)
-  const [galleryIsPermitted, setGalleryIsPermitted ] = useState(false)
-
-  const [galleryItems, setGalleryItems ] = useState([])
-
-  const [cameraRef, setCameraRef] = useState(null)
-  const [cameraType, setCameraType] = useState(Camera.Constants.Type.back)
-  const [cameraFlashMode, setCameraFlashMode] = useState(Camera.Constants.FlashMode.off)
-  const [isCameraReady, setIsCameraReady] = useState(false)
-  const [flashIcons, setFlashIcons] = useState("flash-off")
+  const [ cameraIsPermitted, setCameraIsPermitted ] = useState(false)
+  const [ audioIsPermitted, setAudioIsPermitted ] = useState(false)
+  const [ galleryIsPermitted, setGalleryIsPermitted ] = useState(false)
+  const [ galleryItems, setGalleryItems ] = useState([])
+  const [ height, setHeight ] = useState(9)
+  const [ width, setWidth ] = useState(16)
+  const [ cameraRef, setCameraRef ] = useState(null)
+  const [ cameraType, setCameraType ] = useState(Camera.Constants.Type.back)
+  const [ cameraFlashMode, setCameraFlashMode ] = useState(Camera.Constants.FlashMode.off)
+  const [ isCameraReady, setIsCameraReady ] = useState(false);
+  const [ flashIcons, setFlashIcons ] = useState("flash-off");
+  const [ lockIcon, setLockIcon ] = useState("screen-rotation");
+  const [ recordIcon, setRecordIcon ] = useState("no")
 
  
-  cameraType
+  
   const isFocused = useIsFocused()
 
+  const lockAndUnlockScreen = () => {
+    if(lockIcon === "screen-lock-rotation"){
+      setLockIcon("screen-rotation")
+      ScreenOrientation.unlockAsync()
+    }else{
+      ScreenOrientation.lockAsync(ScreenOrientation.OrientationLock.PORTRAIT_UP)
+      setLockIcon("screen-lock-rotation")
+    }
+  } 
+
   useEffect(() => {
-    (async() => {
+    (
+      async() => {
+      lockAndUnlockScreen();
+
       const cameraStatus = await Camera.requestCameraPermissionsAsync();
       setCameraIsPermitted(cameraStatus.status == 'granted');
 
@@ -55,6 +72,15 @@ const CameraScreen = () => {
     );
   }
 
+  const recordSwitch = async () => {
+    if(recordIcon === "no"){
+      setRecordIcon("stop")
+      recordVideo();
+    }else{
+      setRecordIcon("no")
+      stopVideo();
+    }
+  }
   const recordVideo = async () =>{
     if(cameraRef){
       try {
@@ -83,7 +109,7 @@ const CameraScreen = () => {
     let result = await ImagePicker.launchImageLibraryAsync({
       mediaTypes: ImagePicker.MediaTypeOptions.Videos, 
       allowsEditing: true,
-      aspect: [16, 9]
+      aspect: [height, width]
     })
     if(!result.cancelled){
       //TODO: Pass uri of video
@@ -113,13 +139,30 @@ const CameraScreen = () => {
     }
   }
 
+
+  const listner = async () => {
+    const orientation = await ScreenOrientation.getOrientationAsync()
+
+    if(orientation === 1 || orientation === 2){
+      setHeight(9)
+      setWidth(16)
+    }else{
+      setHeight(16)
+      setWidth(9)
+    }
+  }
+
+    ScreenOrientation.addOrientationChangeListener(listner)
+
   return (
     <View style={styles.container}>
       {isFocused ? 
         <Camera
           ref={ref => setCameraRef(ref)}
-          style={styles.camera}
-          ratio={'16:9'}
+          style={{    flex: 1,
+            backgroundColor: "#000000",
+            aspectRatio: height / width}}
+          ratio={height.toString() + ':' + width.toString()}
           type={cameraType}
           flashMode={cameraFlashMode}
           onCameraReady={() => setIsCameraReady(true)}
@@ -127,43 +170,72 @@ const CameraScreen = () => {
       : null}
       <View style={styles.topToolBarContainer}>
         <View style={{flex: 1, flexDirection: 'row', justifyContent: 'space-between'}}> 
-        <TouchableOpacity 
-          style={styles.iconButton}
-          onPress={() => cameraSwitch()}
-        >
-          <Icon
-            name={"flip-camera-ios"}
-            type='material'
-            color='#FFFFFF'
-            size={30}
-          />
-        </TouchableOpacity>
-        <TouchableOpacity 
-          style={styles.iconButton}
-          onPress={() => flashSwitch()}
-          disabled={cameraType == Camera.Constants.Type.front}
-        >
-          <Icon
-            name={flashIcons}
-            type='material'
-            color='#FFFFFF'
-            size={30}
-          />
-        </TouchableOpacity>
+          <TouchableOpacity 
+            style={styles.iconButton}
+            onPress={() => cameraSwitch()}
+          >
+            <Icon
+              name={"flip-camera-ios"}
+              type='material'
+              color='#FFFFFF'
+              size={30}
+            />
+          </TouchableOpacity>
+          <TouchableOpacity 
+            style={styles.iconButton}
+            onPress={() => lockAndUnlockScreen()}
+          >
+            <Icon
+              name={lockIcon}
+              type='material'
+              color='#FFFFFF'
+              size={30}
+            />
+          </TouchableOpacity>
+          <TouchableOpacity 
+            style={styles.iconButton}
+            onPress={() => flashSwitch()}
+            disabled={cameraType == Camera.Constants.Type.front}
+          >
+            <Icon
+              name={flashIcons}
+              type='material'
+              color='#FFFFFF'
+              size={30}
+            />
+          </TouchableOpacity>
         </View>
       </View>
+      <PrompterContainer style={{
+    position: 'absolute',
+    flex: 1,
+    top: 60,
+    flexDirection: 'column',
+    height: height == 9 ? '77%': "60%",
+    width: '100%',
+  }}/>
+
       <View style={styles.bottomToolBarContainer}>
         <View style={styles.container}></View>
         <View style={styles.recordButtonContainer}>
           <TouchableOpacity 
             disabled={!isCameraReady} 
             style={styles.recordButtonOutline}
-            onLongPress={() => recordVideo()}
-            onPressOut={() => stopVideo()}
+            onPress={() => recordSwitch()}
           >
-            <View
-              style={styles.recordButton}
-            />
+            {   
+              recordIcon === "no" ? 
+              <View
+                style={styles.recordButton}
+              />
+              :
+              <Icon
+              name={recordIcon}
+              type='material'
+              color='#FF4040'
+              size={50}
+              />
+            }
           </TouchableOpacity>
         </View>
         <View style={styles.galleryItemContainer}>
@@ -189,16 +261,12 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
-  camera: {
-    flex: 1,
-    backgroundColor: "#000000",
-    aspectRatio: 9 / 16
-  },
+
   bottomToolBarContainer:{
     position: 'absolute',
     bottom: 0,
     flexDirection: 'row',  
-    marginBottom: 30,
+    marginBottom: 5,
     alignItems: 'center'
   },
   topToolBarContainer: {
@@ -206,7 +274,7 @@ const styles = StyleSheet.create({
     position: 'absolute',
     top: 0,
     flexDirection: 'row',  
-    marginTop: 40,
+    marginTop: 20,
     alignItems: 'center',
     marginHorizontal: 30,
   },
