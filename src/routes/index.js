@@ -1,14 +1,10 @@
-import React, { useEffect, useState, createContext, useContext } from 'react';
-import BeforeLogin from './auth.routes';
+import React from 'react';
+import MainPages from './auth.routes';
 
-const Routes = (props) => {
-  const { linking } = props;
-
-
+const Routes = () => {
   return (
-      <BeforeLogin linking={linking} />
+      <MainPages />
   )
 }
-
 
 export default Routes;
