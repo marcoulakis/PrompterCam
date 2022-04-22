@@ -1,14 +1,14 @@
 import React from "react";
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import CameraScreen from "../pages/CameraScreen";
-import PrompterContainer from "../pages/PrompterContainer";
+import Home from "../pages/Home";
 
 const stackRoutes = createNativeStackNavigator();
 
 const BeforeLogin = () => (
-    <stackRoutes.Navigator  screenOptions={{ headerShown: false }} headerMode="none">
-        <stackRoutes.Screen name="CameraScreen" component={CameraScreen}/>  
-        <stackRoutes.Screen name="PrompterContainer" component={PrompterContainer} />
+    <stackRoutes.Navigator  >
+        <stackRoutes.Screen name="Home" component={Home} />
+        <stackRoutes.Screen options={{headerShown: false}} name="CameraScreen" component={CameraScreen} />  
     </stackRoutes.Navigator>
 )
 

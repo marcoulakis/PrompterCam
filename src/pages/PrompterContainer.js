@@ -3,34 +3,41 @@ import {
   ScrollView,
   StyleSheet,
   Text,
-  Button,
+  View,
   SafeAreaView,
-  NativeSyntheticEvent,
-  NativeScrollEvent,
   TouchableOpacity,
 } from 'react-native';
 import {getValue, fontSizeKey, scrollingSpeedKey} from '../helpers';
+import Slider from '@react-native-community/slider';
+import { Icon } from 'react-native-elements';
 
 const styles = StyleSheet.create({
 
   scrollView: {
-    // backgroundColor: '#000000',
+    // backgroundColor: MainColor,
   },
   button: {
     alignItems: 'center',
-    backgroundColor: '#000000',
-    padding: 0,
+    backgroundColor: '#00000080',
+    marginBottom: 5,
+    marginTop: 10,
+    marginHorizontal: "40%",
+    borderRadius: 30
   },
   buttonText: {color: '#fffb00', fontSize: 20},
 });
 
 
 const PrompterContainer = (props) => {
+
+  console.log(props)
+  const MainColor = props.color;
+
   const refContainer = useRef(null);
   const [isScrolling, setIsScrolling] = useState(false);
 
-  const [fontSize, setFontSize] = useState(30);
-  const [scrollSpeed, setScrollSpeed] = useState(30);
+  const [fontSize, setFontSize] = useState(props.fontSize);
+  const [scrollSpeed, setScrollSpeed] = useState(props.scrollSpeed);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -48,8 +55,7 @@ const PrompterContainer = (props) => {
 
   const textStyle = () => {
     return {
-      transform: [{rotateY: '180deg'}],
-      color: '#ffffff',
+      color: MainColor,
       fontSize,
       textAlign: 'center'
     };
@@ -79,6 +85,42 @@ const PrompterContainer = (props) => {
   };
   return (
     <SafeAreaView style={props.style}>
+      <View style={{ position: 'absolute', top: "50%",  zIndex: 100}}>
+          <Slider
+            style={{width: 150, height: 40, transform: [{ rotate: '-90deg' }], position: 'absolute', left: -40, zIndex: 100}}
+            minimumValue={30}
+            maximumValue={100}
+            minimumTrackTintColor={MainColor}
+            maximumTrackTintColor={MainColor}
+            onValueChange={(props) => setFontSize(props)}
+            value={props.fontSize}
+          />
+          <Icon
+            style={{width: 50, height: 150, position: 'relative', top: 100, left: 10}}
+            name={"format-size"}
+            type='material'
+            color={MainColor}
+            size={30}
+          />
+        </View>
+        <View style={{ position: 'absolute', top: "50%",right: 0,  zIndex: 100}}>
+          <Slider
+            style={{width: 150, height: 40, transform: [{ rotate: '-90deg' }], position: 'absolute', right: -40, zIndex: 100}}
+            minimumValue={10}
+            maximumValue={150}
+            minimumTrackTintColor={MainColor}
+            maximumTrackTintColor={MainColor}
+            onValueChange={(props) => setScrollSpeed(props)}
+            value={props.scrollSpeed}
+          />
+          <Icon
+            style={{width: 50, height: 150, position: 'relative', top: 100, right: 10}}
+            name={"speed"}
+            type='material'
+            color={MainColor}
+            size={30}
+          />
+        </View>
       <ScrollView
         ref={refContainer}
         onScroll={handleScroll}
@@ -86,7 +128,7 @@ const PrompterContainer = (props) => {
         showsVerticalScrollIndicator={false}
         contentInsetAdjustmentBehavior="automatic"
         style={styles.scrollView}>
-        <Text style={textStyle()}>{"gtrefg\ntrf\nrewdafg\ntrf\nrewdafg\ntrf\nrewdafg\ntrf\nrewdafg\ntrf\nrewdafg\ntrf\nrewdafg\ntrf\nrewdafg\ntrf\nrewdafg\ntrf\nrewdafg\ntrf\nrewdafg\ntrf\nrewdafg\ntrf\nrewdafg\ntrf\nrewdafg\ntrf\nrewdafg\ntrf\nrewdafg\ntrf\nrewdafg\ntrf\nrewdafg\ntrf\nrewdafg\ntrf\nrewdafg\ntrf\nrewdafg\ntrf\nrewdafg\ntrf\nrewdadfvfvfvfv"}</Text>
+        <Text style={textStyle()} >{props.text}</Text>
       </ScrollView>
       <TouchableOpacity
         style={styles.button}

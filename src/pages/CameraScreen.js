@@ -9,7 +9,10 @@ import { Icon } from 'react-native-elements';
 import * as ScreenOrientation from "expo-screen-orientation";
 import PrompterContainer from "./PrompterContainer"
 
-const CameraScreen = () => {
+
+const CameraScreen = (props) => {
+
+  const MainColor = props.route.params.color;
 
   const [ cameraIsPermitted, setCameraIsPermitted ] = useState(false)
   const [ audioIsPermitted, setAudioIsPermitted ] = useState(false)
@@ -177,7 +180,7 @@ const CameraScreen = () => {
             <Icon
               name={"flip-camera-ios"}
               type='material'
-              color='#FFFFFF'
+              color={MainColor}
               size={30}
             />
           </TouchableOpacity>
@@ -188,7 +191,7 @@ const CameraScreen = () => {
             <Icon
               name={lockIcon}
               type='material'
-              color='#FFFFFF'
+              color={MainColor}
               size={30}
             />
           </TouchableOpacity>
@@ -200,13 +203,13 @@ const CameraScreen = () => {
             <Icon
               name={flashIcons}
               type='material'
-              color='#FFFFFF'
+              color={MainColor}
               size={30}
             />
           </TouchableOpacity>
         </View>
       </View>
-      <PrompterContainer style={{
+      <PrompterContainer text={props.route.params.text} color={MainColor} scrollSpeed={props.route.params.scrollSpeed} fontSize={props.route.params.fontSize} style={{
     position: 'absolute',
     flex: 1,
     top: 60,
