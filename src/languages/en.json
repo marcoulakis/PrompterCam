@@ -5,6 +5,22 @@
         "settings":"Settings",
         "add": "Add",
         "cancel": "Cancel",
-        "save": "Save"
+        "save": "Save",
+        "delete": "Delete",
+        "flip": "Flip Camera",
+        "screen-rotate-on": "Screen Rotating On",
+        "screen-rotate-off": "Screen Rotating Off",
+        "flash-on": "Flash On",
+        "flash-off": "Flash Off",
+        "flash-auto": "Flash Auto",
+        "text-size": "Text Size",
+        "scroll-speed": "Scrolling Speed",
+        "color": "Color of assets",
+        "play-scrolling": "Play",
+        "pause-scrolling": "Pause",
+        "record": "Record",
+        "stop": "Stop",
+        "gallery": "Gallery",
+        "save-and-close": "Salve and Close"
     }
 }

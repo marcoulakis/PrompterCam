@@ -10,6 +10,7 @@ import {
 } from 'react-native';
 import Swipeable from 'react-native-gesture-handler/Swipeable';
 import {RectButton} from 'react-native-gesture-handler';
+import { useTranslation } from 'react-i18next';
 
 const styles = StyleSheet.create({
   item: {
@@ -42,8 +43,11 @@ export const ScriptListItem = ({
   const close = () => {
     swipeableRow.current?.close();
   };
+  const {t, i18n} = useTranslation();
 
   const renderRightAction = (progress) => {
+
+    
     const trans = progress.interpolate({
       inputRange: [0, 1],
       outputRange: [70, 0],
@@ -62,7 +66,7 @@ export const ScriptListItem = ({
           <RectButton
             style={[styles.rightAction, {backgroundColor: '#dd2c00'}]}
             onPress={pressHandler}>
-            <Text style={styles.actionText}>Delete</Text>
+            <Text style={styles.actionText}>{t("translation.delete")}</Text>
           </RectButton>
         </Animated.View>
       </View>

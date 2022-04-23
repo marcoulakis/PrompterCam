@@ -25,6 +25,8 @@ import {
   scrollingSpeedKey,
 } from '../helpers';
 import { TriangleColorPicker, fromHsv } from 'react-native-color-picker'
+import { useTranslation } from 'react-i18next';
+
 
 const FlatListItemSeparator = () => {
   return (
@@ -39,6 +41,8 @@ const FlatListItemSeparator = () => {
 };
 
 const Home= () => {
+  const {t, i18n} = useTranslation();
+
   const [addModalVisible, setAddModalVisible] = useState(false);
   const [settingsModalVisible, setSettingsModalVisible] = useState(false);
   const [inputString, setInputString] = useState('');
@@ -58,14 +62,14 @@ const Home= () => {
           <Button
             color="#000000"
             onPress={() => setAddModalVisible(true)}
-            title="Add"
+            title={t("translation.add")}
           />
         ),
         headerLeft: () => (
           <Button
             color="#000000"
             onPress={() => setSettingsModalVisible(true)}
-            title="Settings"
+            title={t("translation.settings")}
           />
         ),
       });
@@ -76,12 +80,12 @@ const Home= () => {
             <TouchableOpacity
               style={styles.headerButton}
               onPress={() => setSettingsModalVisible(true)}>
-              <Text style={styles.headerButtonText}>Settings</Text>
+              <Text style={styles.headerButtonText}>{t("translation.settings")}</Text>
             </TouchableOpacity>
             <TouchableOpacity
               style={styles.headerButton}
               onPress={() => setAddModalVisible(true)}>
-              <Text style={styles.headerButtonText}>Add</Text>
+              <Text style={styles.headerButtonText}>{t("translation.settings")}</Text>
             </TouchableOpacity>
           </View>
         ),
@@ -165,12 +169,12 @@ const Home= () => {
               <Pressable
                 style={[styles.button, styles.buttonCancel]}
                 onPress={handleCancel}>
-                <Text style={styles.textStyle}>Cancel</Text>
+                <Text style={styles.textStyle}>{t("translation.cancel")}</Text>
               </Pressable>
               <Pressable
                 style={[styles.button, styles.buttonSave]}
                 onPress={handleSave}>
-                <Text style={styles.textStyle}>Save</Text>
+                <Text style={styles.textStyle}>{t("translation.save")}</Text>
               </Pressable>
             </View>
           </View>
@@ -188,7 +192,7 @@ const Home= () => {
           <View style={styles.modalView}>
             <View style={styles.settingsSection}>
               <Text
-                style={styles.settingsText}>{`Font Size: ${fontSize}`}</Text>
+                style={styles.settingsText}>{`${t("translation.text-size")}: ${fontSize}`}</Text>
               <View style={styles.sliderView}>
                 <Text style={{fontSize: 10, marginRight: 10}}>A</Text>
                 <Slider
@@ -209,7 +213,7 @@ const Home= () => {
               <Text
                 style={
                   styles.settingsText
-                }>{`Color of assets: ${color}`}</Text>
+                }>{`${t("translation.color")}: ${color}`}</Text>
                 <View style={{height: 200, width: "100%", flexDirection: 'row'}}>
                     <TriangleColorPicker
                         onColorChange={color => setColor(fromHsv(color))}
@@ -227,7 +231,7 @@ const Home= () => {
               <Text
                 style={
                   styles.settingsText
-                }>{`Scrolling Speed: ${scrollSpeed}`}</Text>
+                }>{`${t("translation.scroll-speed")}: ${scrollSpeed}`}</Text>
               <View style={styles.sliderView}>
                 <Text style={{fontSize: 25, marginRight: 10}}>🐢</Text>
                 <Slider
@@ -247,7 +251,7 @@ const Home= () => {
             <Pressable
               style={[styles.button, styles.buttonSave]}
               onPress={handleCloseSettings}>
-              <Text style={styles.textStyle}>Save and Close</Text>
+              <Text style={styles.textStyle}>{t("translation.save-and-close")}</Text>
             </Pressable>
           </View>
         </View>

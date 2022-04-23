@@ -8,9 +8,10 @@ import { useIsFocused } from '@react-navigation/native';
 import { Icon } from 'react-native-elements';
 import * as ScreenOrientation from "expo-screen-orientation";
 import PrompterContainer from "./PrompterContainer"
-
+import { useTranslation } from 'react-i18next';
 
 const CameraScreen = (props) => {
+  const {t, i18n} = useTranslation();
 
   const MainColor = props.route.params.color;
 
@@ -176,6 +177,7 @@ const CameraScreen = (props) => {
           <TouchableOpacity 
             style={styles.iconButton}
             onPress={() => cameraSwitch()}
+            accessibilityLabel={t("translation.flip")}
           >
             <Icon
               name={"flip-camera-ios"}
@@ -187,6 +189,7 @@ const CameraScreen = (props) => {
           <TouchableOpacity 
             style={styles.iconButton}
             onPress={() => lockAndUnlockScreen()}
+            accessibilityLabel={lockIcon === "screen-rotation" ? t("translation.screen-rotate-on") : t("translation.screen-rotate-off")}
           >
             <Icon
               name={lockIcon}
@@ -196,6 +199,7 @@ const CameraScreen = (props) => {
             />
           </TouchableOpacity>
           <TouchableOpacity 
+            accessibilityLabel={flashIcons === "flash-on" ? t("translation.flash-on") : t("translation.flash-off")}
             style={styles.iconButton}
             onPress={() => flashSwitch()}
             disabled={cameraType == Camera.Constants.Type.front}
@@ -225,6 +229,7 @@ const CameraScreen = (props) => {
             disabled={!isCameraReady} 
             style={styles.recordButtonOutline}
             onPress={() => recordSwitch()}
+            accessibilityLabel={recordIcon === "no" ? t("translation.record") : t("translation.stop")}
           >
             {   
               recordIcon === "no" ? 
@@ -245,6 +250,7 @@ const CameraScreen = (props) => {
           <TouchableOpacity 
             style={styles.galleryItem}
             onPress={() => pickFromGallery()}
+            accessibilityLabel={t("translation.gallery")}
           >
             {galleryItems[0] == undefined ?
               <></>

@@ -9,9 +9,16 @@ const stackRoutes = createNativeStackNavigator();
 const MainPages = () => (
     <stackRoutes.Navigator  >
         <stackRoutes.Screen name="Home" component={Home} />
+        <stackRoutes.Screen options={{headerShown: false}} name="CameraScreen" component={CameraScreen} />
         <stackRoutes.Screen options={{headerShown: false}} name="Main" component={Main} />
+    </stackRoutes.Navigator>
+)
+const FirstTimePages = () => (
+    <stackRoutes.Navigator  >
+        <stackRoutes.Screen options={{headerShown: false}} name="Main" component={Main} />
+        <stackRoutes.Screen name="Home" component={Home} />
         <stackRoutes.Screen options={{headerShown: false}} name="CameraScreen" component={CameraScreen} />
     </stackRoutes.Navigator>
 )
 
-export default MainPages;
+export { MainPages, FirstTimePages };

@@ -10,6 +10,7 @@ import {
 import {getValue, fontSizeKey, scrollingSpeedKey} from '../helpers';
 import Slider from '@react-native-community/slider';
 import { Icon } from 'react-native-elements';
+import { useTranslation } from 'react-i18next';
 
 const styles = StyleSheet.create({
 
@@ -29,6 +30,7 @@ const styles = StyleSheet.create({
 
 
 const PrompterContainer = (props) => {
+  const {t, i18n} = useTranslation();
 
   console.log(props)
   const MainColor = props.color;
@@ -85,8 +87,13 @@ const PrompterContainer = (props) => {
   };
   return (
     <SafeAreaView style={props.style}>
-      <View style={{ position: 'absolute', top: "50%",  zIndex: 100}}>
+      <View 
+        style={{ position: 'absolute', top: "50%",  zIndex: 100}}
+        accessibilityLabel={t("translation.text-size")}
+      >
           <Slider
+          accessibilityLabel={t("translation.text-size")}
+
             style={{width: 150, height: 40, transform: [{ rotate: '-90deg' }], position: 'absolute', left: -40, zIndex: 100}}
             minimumValue={30}
             maximumValue={100}
@@ -103,8 +110,11 @@ const PrompterContainer = (props) => {
             size={30}
           />
         </View>
-        <View style={{ position: 'absolute', top: "50%",right: 0,  zIndex: 100}}>
+        <View 
+          style={{ position: 'absolute', top: "50%",right: 0,  zIndex: 100}}
+        >
           <Slider
+            accessibilityLabel={t("translation.scroll-speed")}
             style={{width: 150, height: 40, transform: [{ rotate: '-90deg' }], position: 'absolute', right: -40, zIndex: 100}}
             minimumValue={10}
             maximumValue={150}
@@ -133,7 +143,7 @@ const PrompterContainer = (props) => {
       <TouchableOpacity
         style={styles.button}
         onPress={() => setIsScrolling(!isScrolling)}>
-        <Text style={styles.buttonText}>{isScrolling ? 'Pause' : 'Play'}</Text>
+        <Text style={styles.buttonText}>{isScrolling ? t("translation.pause-scrolling") : t("translation.play-scrolling")}</Text>
       </TouchableOpacity>
     </SafeAreaView>
   );

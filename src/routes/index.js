@@ -1,10 +1,13 @@
 import React from 'react';
-import MainPages from './auth.routes';
+import { MainPages, FirstTimePages } from './auth.routes';
 
-const Routes = () => {
-  return (
-      <MainPages />
-  )
+const Routes = (props) => {
+  console.log(props)
+  if(props.isOpen){
+    return <MainPages />
+  }else{
+    return <FirstTimePages />
+  }
 }
 
 export default Routes;

@@ -2,7 +2,7 @@ import i18next from 'i18next';
 import { initReactI18next } from 'react-i18next';
 import pt from './pt.json';
 import en from './en.json';
-
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 
 
@@ -10,10 +10,10 @@ i18next.use(initReactI18next).init({
     initImmediate: false,
     preload: ["pt", "en"],
     fallbackLng: "en",
-    lng: "pt",
+    lng:  'en',
     resources: {
       pt: { translation: pt },
-      pt: { translation: en },
+      en: { translation: en },
 
     }
 })

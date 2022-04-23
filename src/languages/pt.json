@@ -1,10 +1,27 @@
 {
     "translation":{
         "home":"Home",
-        "about":"About",
-        "settings":"Settings",
-        "add": "Add",
-        "cancel": "Cancel",
-        "save": "Save"
+        "about":"Sobre",
+        "settings":"Configurações",
+        "add": "Adicionar",
+        "cancel": "Cancelar",
+        "save": "Salvar",
+        "delete": "Apagar",
+        "flip": "Virar Camera",
+        "screen-rotate-on": "Rotação de Tela Ligada",
+        "screen-rotate-off": "Rotação de Tela Desligada",
+        "flash-on": "Flash Ligado",
+        "flash-off": "Flash Desligado",
+        "flash-auto": "Flash Automático",
+        "text-size": "Tamanho do Texto",
+        "scroll-speed": "Velocidade do Scroll",
+        "color": "Cores dos Itens",
+        "play-scrolling": "Play",
+        "pause-scrolling": "Pausar",
+        "record": "Gravar",
+        "stop": "Parar",
+        "gallery": "Galeria",
+        "save-and-close": "Salvar e Fechar"
+
     }
 }
