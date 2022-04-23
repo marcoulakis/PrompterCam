@@ -8,8 +8,8 @@ const stackRoutes = createNativeStackNavigator();
 
 const MainPages = () => (
     <stackRoutes.Navigator  >
-        <stackRoutes.Screen options={{headerShown: false}} name="Main" component={Main} />
         <stackRoutes.Screen name="Home" component={Home} />
+        <stackRoutes.Screen options={{headerShown: false}} name="Main" component={Main} />
         <stackRoutes.Screen options={{headerShown: false}} name="CameraScreen" component={CameraScreen} />
     </stackRoutes.Navigator>
 )
