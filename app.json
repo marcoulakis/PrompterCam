@@ -1,8 +1,8 @@
 {
   "expo": {
     "name": "Teleprompter Camera",
-    "slug": "camera",
-    "version": "1.0.0",
+    "slug": "teleprompter",
+    "version": "1.0.1",
     "icon": "./assets/icon.png",
     "splash": {
       "image": "./assets/splash.png",
@@ -16,14 +16,23 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "buildNumber": "2",
+      "supportsTablet": true,
+      "bundleIdentifier": "teleprompter.camera",
+      "infoPlist": {
+        "NSCameraUsageDescription": "This app uses the camera to record videos and save them into the device's library.",
+        "NSPhotoLibraryUsageDescription": "This app uses the library access to display the videos to the user.",
+        "NSPhotoLibraryAddUsageDescription": "This app uses the library add usage to save the recorded videos into the device's library.",
+        "NSMicrophoneUsageDescription": "This app uses the microphone to record videos with the cane and save them into the device's library."
+      }
     },
     "android": {
+      "versionCode": "2",
       "adaptiveIcon": {
         "foregroundImage": "./assets/icon.png",
         "backgroundColor": "#000"
       },
-      "package": "marina.haru.camera"
+      "package": "teleprompter.camera"
     },
     "web": {
       "favicon": "./assets/icon.png"

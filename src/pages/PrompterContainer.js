@@ -91,10 +91,9 @@ const PrompterContainer = (props) => {
         style={{ position: 'absolute', top: "50%",  zIndex: 100}}
         accessibilityLabel={t("translation.text-size")}
       >
+        <View style={{width: 150, height: 40, position: 'absolute', left: -40, zIndex: 100, transform: [{ rotate: '-90deg' }]}}>
           <Slider
           accessibilityLabel={t("translation.text-size")}
-
-            style={{width: 150, height: 40, transform: [{ rotate: '-90deg' }], position: 'absolute', left: -40, zIndex: 100}}
             minimumValue={30}
             maximumValue={100}
             minimumTrackTintColor={MainColor}
@@ -102,6 +101,7 @@ const PrompterContainer = (props) => {
             onValueChange={(props) => setFontSize(props)}
             value={props.fontSize}
           />
+        </View>
           <Icon
             style={{width: 50, height: 150, position: 'relative', top: 100, left: 10}}
             name={"format-size"}
@@ -113,16 +113,17 @@ const PrompterContainer = (props) => {
         <View 
           style={{ position: 'absolute', top: "50%",right: 0,  zIndex: 100}}
         >
-          <Slider
-            accessibilityLabel={t("translation.scroll-speed")}
-            style={{width: 150, height: 40, transform: [{ rotate: '-90deg' }], position: 'absolute', right: -40, zIndex: 100}}
-            minimumValue={10}
-            maximumValue={150}
-            minimumTrackTintColor={MainColor}
-            maximumTrackTintColor={MainColor}
-            onValueChange={(props) => setScrollSpeed(props)}
-            value={props.scrollSpeed}
-          />
+          <View style={{width: 150, height: 40, position: 'absolute', right: -40, zIndex: 100, transform: [{ rotate: '-90deg' }]}}>
+            <Slider
+              accessibilityLabel={t("translation.scroll-speed")}
+              minimumValue={10}
+              maximumValue={150}
+              minimumTrackTintColor={MainColor}
+              maximumTrackTintColor={MainColor}
+              onValueChange={(props) => setScrollSpeed(props)}
+              value={props.scrollSpeed}
+            />
+          </View>
           <Icon
             style={{width: 50, height: 150, position: 'relative', top: 100, right: 10}}
             name={"speed"}

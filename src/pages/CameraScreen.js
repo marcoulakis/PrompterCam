@@ -1,4 +1,4 @@
-import { StyleSheet, Text, TouchableOpacity, View, Image } from 'react-native';
+import { StyleSheet, Text, TouchableOpacity, View, Image, Linking } from 'react-native';
 import React, { useEffect, useState} from 'react';
 import { Camera } from 'expo-camera';
 import { Audio } from 'expo-av';
@@ -10,7 +10,17 @@ import * as ScreenOrientation from "expo-screen-orientation";
 import PrompterContainer from "./PrompterContainer"
 import { useTranslation } from 'react-i18next';
 
+
 const CameraScreen = (props) => {
+
+  const openAppSettings = () => {
+    if (Platform.OS === 'ios') {
+      Linking.openURL("app-settings:");
+    } else {
+      Linking.openSettings();  
+    }
+  }
+
   const {t, i18n} = useTranslation();
 
   const MainColor = props.route.params.color;
@@ -70,8 +80,24 @@ const CameraScreen = (props) => {
   }
   if(!cameraIsPermitted || !audioIsPermitted || !galleryIsPermitted){
     return (
-      <View>
-        <Text>Permissions pending</Text> 
+      <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
+        <TouchableOpacity onPress={openAppSettings} style={{alignItems: 'center', justifyContent: 'center'}}>
+          <Text style={styles.permissionsTitle}>{t("translation.permissions-title")}</Text>
+          <Text style={styles.permissionsSubtitle}>{t("translation.permissions-subtitle")}</Text>
+            <Text style={styles.permissionsItems}>
+              {
+                !cameraIsPermitted && t("translation.camera-permissions")
+              }
+              {
+                !audioIsPermitted && t("translation.microphone-permissions")
+              }
+              {
+                !galleryIsPermitted && t("translation.gallery-permissions")
+              }
+              
+            </Text>
+          <Text style={styles.goToSettings}>{t("translation.go-to-settings")}</Text>
+        </TouchableOpacity>
       </View>
     );
   }
@@ -310,6 +336,30 @@ const styles = StyleSheet.create({
   },
   galleryItemContainer: {
     flex: 1,
+  },
+  permissionsTitle: {
+    textAlign: 'center',
+    fontSize: 34, 
+    color: '#000000A0',
+    fontWeight: 'bold',
+  },
+  permissionsSubtitle:{
+    textAlign: 'center',
+    fontSize: 18, 
+    color: '#000000A0',
+    marginBottom: 30,
+  },
+  permissionsItems: {
+    textAlign: 'center',
+    fontSize: 20, 
+    color: '#000000A0',
+    marginHorizontal: 30,
+  },
+  goToSettings: {
+    textAlign: 'center',
+    fontSize: 20, 
+    color: '#000000A0',
+    fontWeight: 'bold'
   },
   galleryItem:{
     borderWidth:2,

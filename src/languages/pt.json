@@ -21,7 +21,13 @@
         "record": "Gravar",
         "stop": "Parar",
         "gallery": "Galeria",
-        "save-and-close": "Salvar e Fechar"
+        "save-and-close": "Salvar e Fechar",
+        "permissions-title": "Permissões Pendentes",
+        "permissions-subtitle": "O aplicativo não funciona direito sem elas.\n Por favor, ative-as.",
+        "camera-permissions": "• Uso da Câmera: Este aplicativo usa a câmera para gravar vídeos e salvá-los na biblioteca do dispositivo.\n\n",
+        "gallery-permissions": "• Uso da Galeria: Este aplicativo usa a galeria do dispositivo para salvar e exibir os vídeos.\n\n",
+        "microphone-permissions": "• Uso do Microfone: Este aplicativo usa o microfone para gravar áudio e salvá-lo na biblioteca do dispositivo.\n\n",
+        "go-to-settings": "Clique para ir para as Configurações"
 
     }
 }

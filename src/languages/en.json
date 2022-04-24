@@ -21,6 +21,12 @@
         "record": "Record",
         "stop": "Stop",
         "gallery": "Gallery",
-        "save-and-close": "Salve and Close"
+        "save-and-close": "Salve and Close",
+        "permissions-title": "Permissions Pending",
+        "permissions-subtitle": "The app cannot work properly without them. Please turn them on.",
+        "camera-permissions": "• Camera Usage: This app uses the camera to record videos and save them into the device's library.\n\n",
+        "gallery-permissions": "• Microphone Usage: This app uses the microphone to record audio and save it into the device's library.\n\n",
+        "microphone-permissions": "• Gallery Usage: This app uses the device's gallery to save and display the videos.\n\n",
+        "go-to-settings": "Click me to go to Settings"
     }
 }

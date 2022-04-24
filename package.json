@@ -46,7 +46,8 @@
     "react-native-web": "0.17.1",
     "react-navigation": "^4.4.4",
     "react-redux": "^7.2.6",
-    "redux-persist": "^6.0.0"
+    "redux-persist": "^6.0.0",
+    "rn-vertical-slider": "^2.0.2"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9"
