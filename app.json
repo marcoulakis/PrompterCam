@@ -2,6 +2,7 @@
   "expo": {
     "name": "PrompterCam",
     "slug": "teleprompter",
+    "icon": "./assets/icon.png",
     "version": "1.0.3",
     "splash": {
       "image": "./assets/splash.png",
