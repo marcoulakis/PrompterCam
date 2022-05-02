@@ -8,6 +8,8 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 export default function App () {
 
   const [isOpen, setIsOpen] = useState(true)
+  const [language, setLanguage] = useState(undefined)
+
 
   useEffect( () => {
     getIsOpen()
@@ -17,6 +19,7 @@ export default function App () {
     const isTrue = await AsyncStorage.getItem("@teleprompter:language");
     console.log("is true  ", isTrue  )
     if(isTrue === "en" || isTrue === "pt"){
+      setLanguage(isTrue)
       setIsOpen(true)
     }else{
       setIsOpen(false)
@@ -26,7 +29,7 @@ export default function App () {
   
   return (
       <NavigationContainer>
-        <Routes isOpen={isOpen}/>
+        <Routes language={language} isOpen={isOpen}/>
       </NavigationContainer>
   );
 }

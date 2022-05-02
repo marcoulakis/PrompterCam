@@ -7,7 +7,6 @@ i18next.use(initReactI18next).init({
     initImmediate: false,
     preload: ["pt", "en"],
     fallbackLng: "en",
-    lng:  'pt',
     resources: {
       pt: { translation: pt },
       en: { translation: en },

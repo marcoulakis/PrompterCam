@@ -85,7 +85,7 @@ const Home= () => {
             <TouchableOpacity
               style={styles.headerButton}
               onPress={() => setAddModalVisible(true)}>
-              <Text style={styles.headerButtonText}>{t("translation.settings")}</Text>
+              <Text style={styles.headerButtonText}>{t("translation.add")}</Text>
             </TouchableOpacity>
           </View>
         ),
@@ -336,5 +336,5 @@ const styles = StyleSheet.create({
       backgroundColor: '#ffffff',
       padding: 10,
     },
-    headerButtonText: {color: '#000000', fontSize: 20, fontWeight: '800'},
+    headerButtonText: {color: '#000000', fontSize: 18, fontWeight: '800'},
 });

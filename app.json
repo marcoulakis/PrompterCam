@@ -2,12 +2,11 @@
   "expo": {
     "name": "Teleprompter Camera",
     "slug": "teleprompter",
-    "version": "1.0.1",
-    "icon": "./assets/icon.png",
+    "version": "1.0.3",
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#FFFFFF"
     },
     "updates": {
       "fallbackToCacheTimeout": 0
@@ -16,7 +15,7 @@
       "**/*"
     ],
     "ios": {
-      "buildNumber": "2",
+      "buildNumber": "4",
       "supportsTablet": true,
       "bundleIdentifier": "teleprompter.camera",
       "infoPlist": {
@@ -27,10 +26,10 @@
       }
     },
     "android": {
-      "versionCode": "2",
+      "versionCode": 4,
       "adaptiveIcon": {
-        "foregroundImage": "./assets/icon.png",
-        "backgroundColor": "#000"
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#FFFFFF"
       },
       "package": "teleprompter.camera"
     },

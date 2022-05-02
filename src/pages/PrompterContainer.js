@@ -59,7 +59,8 @@ const PrompterContainer = (props) => {
     return {
       color: MainColor,
       fontSize,
-      textAlign: 'center'
+      textAlign: 'center',
+      marginHorizontal: 50
     };
   };
 

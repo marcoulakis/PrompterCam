@@ -1,20 +1,31 @@
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
-import React from 'react'
+import { StyleSheet, Text, TouchableOpacity, View, Image} from 'react-native'
+import React, {useState} from 'react'
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import i18next from '../languages';
 import {useNavigation} from '@react-navigation/native';
+import image from '../../assets/splash.png'
 
 const Main = () => {
 
+  const [chosenLanguage, setChosenLanguage] = useState(undefined) 
   const navigation = useNavigation();
 
+  const getLanguage = async () => {
+    const language = await AsyncStorage.getItem("@teleprompter:language")
+    if(language === "en" || language === "pt"){
+    setChosenLanguage(language)
+    }else{
+      setChosenLanguage("undefined")
+    }
+  }
   const language = (chosenLanguage) => {
     AsyncStorage.setItem('@teleprompter:language', chosenLanguage)
     i18next.changeLanguage(chosenLanguage)
     navigation.navigate("Home")
   }
-
+getLanguage();
   return (
+    chosenLanguage === "undefined" ?
     <View style={styles.container}>
       <View style={styles.titleContainer}>
         <Text style={styles.title}>Choose Your Language</Text>
@@ -30,6 +41,10 @@ const Main = () => {
         </TouchableOpacity>
       </View>
     </View>
+    : 
+    <>
+      <Image style={{height: '100%', width: '100%'}} source={image}/>
+    </>
   )
 }
 
