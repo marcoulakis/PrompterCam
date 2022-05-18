@@ -106,6 +106,7 @@ const Home= () => {
       if (defaultScrollingSpeed !== null) {
         setScrollSpeed(parseInt(defaultScrollingSpeed, 10));
       }
+
     };
     fetchData();
   }, []);

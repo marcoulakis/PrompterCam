@@ -1,4 +1,4 @@
-import { StyleSheet, Text, TouchableOpacity, View, Image, Linking } from 'react-native';
+import { StyleSheet, Text, TouchableOpacity, View, Image, Linking, Dimensions } from 'react-native';
 import React, { useEffect, useState} from 'react';
 import { Camera } from 'expo-camera';
 import { Audio } from 'expo-av';
@@ -240,13 +240,13 @@ const CameraScreen = (props) => {
         </View>
       </View>
       <PrompterContainer text={props.route.params.text} color={MainColor} scrollSpeed={props.route.params.scrollSpeed} fontSize={props.route.params.fontSize} style={{
-    position: 'absolute',
-    flex: 1,
-    top: 60,
-    flexDirection: 'column',
-    height: height == 9 ? '77%': "60%",
-    width: '100%',
-  }}/>
+        position: 'absolute',
+        flex: 1,
+        top: 60,
+        flexDirection: 'column',
+        height: height == 9 ? '77%': "60%",
+        width: '100%',
+      }}/>
 
       <View style={styles.bottomToolBarContainer}>
         <View style={styles.container}></View>
