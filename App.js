@@ -1,9 +1,10 @@
 // console.disableYellowBox = true
-import React, { Component, useEffect, useState }from 'react';
+import React, { Appearance, useEffect, useState }from 'react';
 import  Routes  from './src/routes';
 import { NavigationContainer } from '@react-navigation/native';
 import i18next from './src/languages';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+
 
 export default function App () {
 
@@ -15,6 +16,7 @@ export default function App () {
     getIsOpen()
   }, []);
 
+  
   async function getIsOpen() {
     const isTrue = await AsyncStorage.getItem("@teleprompter:language");
     console.log("is true  ", isTrue  )

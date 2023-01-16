@@ -11,6 +11,7 @@ import {
   Button,
   Platform,
   TouchableOpacity,
+  StatusBar
 } from 'react-native';
 import Slider from '@react-native-community/slider';
 import {useNavigation} from '@react-navigation/native';
@@ -34,7 +35,7 @@ const FlatListItemSeparator = () => {
       style={{
         height: 1,
         width: '100%',
-        backgroundColor: '#818181',
+        backgroundColor: '#888888',
       }}
     />
   );
@@ -60,14 +61,14 @@ const Home= () => {
       navigation.setOptions({
         headerRight: () => (
           <Button
-            color="#000000"
+            color="#ffffff"
             onPress={() => setAddModalVisible(true)}
             title={t("translation.add")}
           />
         ),
         headerLeft: () => (
           <Button
-            color="#000000"
+            color="#ffffff"
             onPress={() => setSettingsModalVisible(true)}
             title={t("translation.settings")}
           />
@@ -150,6 +151,10 @@ const Home= () => {
 
   return (
     <View style={styles.centeredView}>
+      <StatusBar
+        animated={true}
+        barStyle={"light-content"}
+      />
       <Modal
         animationType="slide"
         transparent
@@ -337,5 +342,5 @@ const styles = StyleSheet.create({
       backgroundColor: '#ffffff',
       padding: 10,
     },
-    headerButtonText: {color: '#000000', fontSize: 18, fontWeight: '800'},
+    headerButtonText: {color: '#ffffff', fontSize: 18, fontWeight: '800'},
 });

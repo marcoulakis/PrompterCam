@@ -20,13 +20,14 @@ const styles = StyleSheet.create({
   rightAction: {
     alignItems: 'center',
     flexDirection: I18nManager.isRTL ? 'row-reverse' : 'row',
-    backgroundColor: '#dd2c00',
+    backgroundColor: '#ff3b30',
     flex: 1,
     justifyContent: 'flex-end',
   },
   actionText: {
-    color: 'white',
-    fontSize: 16,
+    color: '#ffffff',
+    fontWeight: 'bold',
+    fontSize: 15,
     backgroundColor: 'transparent',
     padding: 10,
   },
@@ -64,7 +65,7 @@ export const ScriptListItem = ({
         }}>
         <Animated.View style={{flex: 1, transform: [{translateX: trans}]}}>
           <RectButton
-            style={[styles.rightAction, {backgroundColor: '#dd2c00'}]}
+            style={styles.rightAction}
             onPress={pressHandler}>
             <Text style={styles.actionText}>{t("translation.delete")}</Text>
           </RectButton>
@@ -81,7 +82,7 @@ export const ScriptListItem = ({
       rightThreshold={40}
       renderRightActions={renderRightAction}>
       <TouchableOpacity onPress={onPress} style={styles.item}>
-        <Text>{title}</Text>
+        <Text style={{color: '#ffffff', fontSize: 16}}>{title}</Text>
       </TouchableOpacity>
     </Swipeable>
   );

@@ -7,16 +7,28 @@ import Main from "../pages/Main";
 const stackRoutes = createNativeStackNavigator();
 
 const MainPages = () => (
-    <stackRoutes.Navigator  >
-        <stackRoutes.Screen name="Home" component={Home} />
-        <stackRoutes.Screen options={{headerShown: false}} name="CameraScreen" component={CameraScreen} />
+    <stackRoutes.Navigator>
+        <stackRoutes.Screen name="Home" 
+        options={{
+            headerStyle: {backgroundColor: "#161618"}, 
+            headerTintColor: "#fff",
+            headerTitleStyle: {fontWeight: 'bold'}
+        }}  
+        component={Home} />
+        <stackRoutes.Screen options={{headerShown: false, headerStyle: {backgroundColor: "#000" }}} name="CameraScreen" component={CameraScreen} />
         <stackRoutes.Screen options={{headerShown: false}} name="Main" component={Main} />
     </stackRoutes.Navigator>
 )
 const FirstTimePages = () => (
-    <stackRoutes.Navigator  >
+    <stackRoutes.Navigator>
         <stackRoutes.Screen options={{headerShown: false}} name="Main" component={Main} />
-        <stackRoutes.Screen name="Home" component={Home} />
+        <stackRoutes.Screen name="Home"  
+        options={{
+            headerStyle: {backgroundColor: "#161618"}, 
+            headerTintColor: "#fff",
+            headerTitleStyle: {fontWeight: 'bold'}
+        }}  
+        component={Home} />
         <stackRoutes.Screen options={{headerShown: false}} name="CameraScreen" component={CameraScreen} />
     </stackRoutes.Navigator>
 )

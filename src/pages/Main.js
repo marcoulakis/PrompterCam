@@ -1,4 +1,4 @@
-import { StyleSheet, Text, TouchableOpacity, View, Image, SafeAreaView} from 'react-native'
+import { StyleSheet, Text, TouchableOpacity, View, Image, SafeAreaView, StatusBar} from 'react-native'
 import React, {useState} from 'react'
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import i18next from '../languages';
@@ -30,6 +30,10 @@ getLanguage();
   return (
     chosenLanguage === "undefined" ?
     <SafeAreaView style={styles.container}>
+      <StatusBar
+        animated={true}
+        barStyle={"light-content"}
+      />
       <View style={styles.titleContainer}>
         <Text style={styles.title}>Choose Your Language</Text>
         <View style={{flex: 1, marginVertical: 5, borderColor: '#818181', borderWidth: 1, borderRadius: 0, width: "70%"}} />
