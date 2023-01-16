@@ -1,4 +1,4 @@
-import { StyleSheet, Text, TouchableOpacity, View, Image, Linking, Dimensions } from 'react-native';
+import { StyleSheet, Text, TouchableOpacity, View, Image, Linking, Dimensions, SafeAreaView } from 'react-native';
 import React, { useEffect, useState} from 'react';
 import { Camera } from 'expo-camera';
 import { Audio } from 'expo-av';
@@ -189,7 +189,7 @@ const CameraScreen = (props) => {
       {isFocused ? 
         <Camera
           ref={ref => setCameraRef(ref)}
-          style={{    flex: 1,
+          style={{    flex: 1, position: 'absolute', width : '100%', height : '100%',
             backgroundColor: "#000000",
             aspectRatio: height / width}}
           ratio={height.toString() + ':' + width.toString()}
@@ -198,94 +198,93 @@ const CameraScreen = (props) => {
           onCameraReady={() => setIsCameraReady(true)}
         /> 
       : null}
-      <View style={styles.topToolBarContainer}>
-        <View style={{flex: 1, flexDirection: 'row', justifyContent: 'space-between'}}> 
-          <TouchableOpacity 
-            style={styles.iconButton}
-            onPress={() => cameraSwitch()}
-            accessibilityLabel={t("translation.flip")}
-          >
-            <Icon
-              name={"flip-camera-ios"}
-              type='material'
-              color={MainColor}
-              size={30}
-            />
-          </TouchableOpacity>
-          <TouchableOpacity 
-            style={styles.iconButton}
-            onPress={() => lockAndUnlockScreen()}
-            accessibilityLabel={lockIcon === "screen-rotation" ? t("translation.screen-rotate-on") : t("translation.screen-rotate-off")}
-          >
-            <Icon
-              name={lockIcon}
-              type='material'
-              color={MainColor}
-              size={30}
-            />
-          </TouchableOpacity>
-          <TouchableOpacity 
-            accessibilityLabel={flashIcons === "flash-on" ? t("translation.flash-on") : t("translation.flash-off")}
-            style={styles.iconButton}
-            onPress={() => flashSwitch()}
-            disabled={cameraType == Camera.Constants.Type.front}
-          >
-            <Icon
-              name={flashIcons}
-              type='material'
-              color={MainColor}
-              size={30}
-            />
-          </TouchableOpacity>
-        </View>
-      </View>
-      <PrompterContainer text={props.route.params.text} color={MainColor} scrollSpeed={props.route.params.scrollSpeed} fontSize={props.route.params.fontSize} style={{
-        position: 'absolute',
-        flex: 1,
-        top: 60,
-        flexDirection: 'column',
-        height: height == 9 ? '77%': "60%",
-        width: '100%',
-      }}/>
-
-      <View style={styles.bottomToolBarContainer}>
-        <View style={styles.container}></View>
-        <View style={styles.recordButtonContainer}>
-          <TouchableOpacity 
-            disabled={!isCameraReady} 
-            style={styles.recordButtonOutline}
-            onPress={() => recordSwitch()}
-            accessibilityLabel={recordIcon === "no" ? t("translation.record") : t("translation.stop")}
-          >
-            {   
-              recordIcon === "no" ? 
-              <View
-                style={styles.recordButton}
-              />
-              :
+      <SafeAreaView style={{flex: 1, flexDirection: 'column', justifyContent: 'space-around'}}> 
+       <View style={styles.topToolBarContainer}>
+          <View style={{flex: 1, flexDirection: 'row', justifyContent: 'space-between'}}> 
+            <TouchableOpacity 
+              style={styles.iconButton}
+              onPress={() => cameraSwitch()}
+              accessibilityLabel={t("translation.flip")}
+            >
               <Icon
-              name={recordIcon}
-              type='material'
-              color='#FF4040'
-              size={50}
+                name={"flip-camera-ios"}
+                type='material'
+                color={MainColor}
+                size={30}
               />
-            }
-          </TouchableOpacity>
+            </TouchableOpacity>
+            <TouchableOpacity 
+              style={styles.iconButton}
+              onPress={() => lockAndUnlockScreen()}
+              accessibilityLabel={lockIcon === "screen-rotation" ? t("translation.screen-rotate-on") : t("translation.screen-rotate-off")}
+            >
+              <Icon
+                name={lockIcon}
+                type='material'
+                color={MainColor}
+                size={30}
+              />
+            </TouchableOpacity>
+            <TouchableOpacity 
+              accessibilityLabel={flashIcons === "flash-on" ? t("translation.flash-on") : t("translation.flash-off")}
+              style={styles.iconButton}
+              onPress={() => flashSwitch()}
+              disabled={cameraType == Camera.Constants.Type.front}
+            >
+              <Icon
+                name={flashIcons}
+                type='material'
+                color={MainColor}
+                size={30}
+              />
+            </TouchableOpacity>
+          </View>
         </View>
-        <View style={styles.galleryItemContainer}>
-          <TouchableOpacity 
-            style={styles.galleryItem}
-            onPress={() => pickFromGallery()}
-            accessibilityLabel={t("translation.gallery")}
-          >
-            {galleryItems[0] == undefined ?
-              <></>
-              : 
-              <Image style={styles.galleryItemPhoto} source={{uri: galleryItems[0].uri}}/>
-            }
-          </TouchableOpacity>
+        <PrompterContainer text={props.route.params.text} color={MainColor} scrollSpeed={props.route.params.scrollSpeed} fontSize={props.route.params.fontSize} style={{
+          position: 'relative',
+          flex: 1,
+          flexDirection: 'column',
+        }}/>
+        <View style={{ flexDirection: 'row', justifyContent: 'space-around'}}>
+          
+          <View style={styles.container}></View>
+          <View style={styles.recordButtonContainer}>
+            <TouchableOpacity 
+              disabled={!isCameraReady} 
+              style={styles.recordButtonOutline}
+              onPress={() => recordSwitch()}
+              accessibilityLabel={recordIcon === "no" ? t("translation.record") : t("translation.stop")}
+            >
+              {   
+                recordIcon === "no" ? 
+                <View
+                  style={styles.recordButton}
+                />
+                :
+                <Icon
+                name={recordIcon}
+                type='material'
+                color='#FF4040'
+                size={50}
+                />
+              }
+            </TouchableOpacity>
+          </View>
+          <View style={styles.galleryItemContainer}>
+            <TouchableOpacity 
+              style={styles.galleryItem}
+              onPress={() => pickFromGallery()}
+              accessibilityLabel={t("translation.gallery")}
+            >
+              {galleryItems[0] == undefined ?
+                <></>
+                : 
+                <Image style={styles.galleryItemPhoto} source={{uri: galleryItems[0].uri}}/>
+              }
+            </TouchableOpacity>
+          </View>
         </View>
-      </View>
+      </SafeAreaView>
     </View>
   );
 };
@@ -298,23 +297,17 @@ const styles = StyleSheet.create({
   },
 
   bottomToolBarContainer:{
-    position: 'absolute',
-    bottom: 0,
+    position: 'relative',
     flexDirection: 'row',  
-    marginBottom: 5,
     alignItems: 'center'
   },
   topToolBarContainer: {
-    flex: 1,
-    position: 'absolute',
-    top: 0,
+    position: 'relative',
     flexDirection: 'row',  
-    marginTop: 20,
     alignItems: 'center',
     marginHorizontal: 30,
   },
   recordButtonContainer:{
-    flex: 1,
     marginHorizontal: 30,
     alignItems: 'center',
   },
@@ -330,12 +323,13 @@ const styles = StyleSheet.create({
     borderRadius: 100,
     height: 85,
     width: 85,
-    flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
   },
   galleryItemContainer: {
     flex: 1,
+    marginVertical:14,
+
   },
   permissionsTitle: {
     textAlign: 'center',
@@ -366,12 +360,12 @@ const styles = StyleSheet.create({
     borderColor: '#FFFFFF',
     borderRadius: 10,
     overflow: 'hidden',
-    height: 50,
-    width: 50,
+    height: 60,
+    width: 60,
   },
   galleryItemPhoto:{
-    height: 50,
-    width: 50,
+    height: 60,
+    width: 60,
     borderRadius: 10,
   },
   iconButton: {

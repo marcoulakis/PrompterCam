@@ -34,7 +34,7 @@ const FlatListItemSeparator = () => {
       style={{
         height: 1,
         width: '100%',
-        backgroundColor: '#888888',
+        backgroundColor: '#818181',
       }}
     />
   );
@@ -272,7 +272,7 @@ export default Home;
 const styles = StyleSheet.create({
     centeredView: {
       flex: 1,
-      backgroundColor: '#ffffff',
+      backgroundColor: '#000000',
     },
     buttonContainer: {
       flexDirection: 'row',

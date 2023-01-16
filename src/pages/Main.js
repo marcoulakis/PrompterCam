@@ -1,9 +1,12 @@
-import { StyleSheet, Text, TouchableOpacity, View, Image} from 'react-native'
+import { StyleSheet, Text, TouchableOpacity, View, Image, SafeAreaView} from 'react-native'
 import React, {useState} from 'react'
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import i18next from '../languages';
 import {useNavigation} from '@react-navigation/native';
-import image from '../../assets/splash.png'
+import image from '../../assets/splash.png';
+import usa from '../../assets/usa.png';
+import br from '../../assets/br.png';
+
 
 const Main = () => {
 
@@ -26,21 +29,21 @@ const Main = () => {
 getLanguage();
   return (
     chosenLanguage === "undefined" ?
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
       <View style={styles.titleContainer}>
         <Text style={styles.title}>Choose Your Language</Text>
-        <Text style={styles.title}>-----------------------</Text>
+        <View style={{flex: 1, marginVertical: 5, borderColor: '#818181', borderWidth: 1, borderRadius: 0, width: "70%"}} />
         <Text style={styles.title}>Escolha Seu Idioma</Text>
       </View>
-      <View>
+      <View style={styles.languageContainer}>
         <TouchableOpacity onPress={() => language("en")} style={styles.button}>
-          <Text style={styles.buttonText}>English</Text>
+          <Image source={usa} style={styles.languageImage} />
         </TouchableOpacity>
         <TouchableOpacity onPress={() => language("pt")}  style={styles.button}>
-          <Text style={styles.buttonText}>Português</Text>
+          <Image source={br} style={styles.languageImage}/>
         </TouchableOpacity>
       </View>
-    </View>
+    </SafeAreaView>
     : 
     <>
       <Image style={{height: '100%', width: '100%'}} source={image}/>
@@ -53,32 +56,39 @@ export default Main
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#000000',
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  languageContainer: {
+    width: '95%',
+    flexDirection: 'row',
+    justifyContent: "space-around",
+    backgroundColor: '#212124',
+    alignItems: 'space-around',
+    paddingVertical: 20,
+    borderRadius: 50,
   },
   titleContainer:{
     alignItems: 'center',
     justifyContent: 'center',
     textAlign: 'center',
+    width: '100%',
     marginBottom: 50,
+  },
+  languageImage:{
+    width: 130,
+    height: 130,
   },
   title: {
     fontSize: 30,
-    color: '#000000aa',
+    color: '#ffff',
   },
   button: {
     alignItems: 'center',
-    backgroundColor: '#00000080',
-    marginBottom: 5,
-    marginTop: 10,
-    borderRadius: 30,
-    paddingVertical: 10,
-    paddingHorizontal: 20
-
+    borderRadius: 100,
   },
   buttonText: {
-    color: '#ffffff',
     fontSize: 40,
   }
 })
