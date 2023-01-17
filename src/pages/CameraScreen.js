@@ -183,14 +183,14 @@ const CameraScreen = (props) => {
   }
 
     ScreenOrientation.addOrientationChangeListener(listner)
-
+  // need to rebuild the camera layout
   return (
     <View style={styles.container}>
       {isFocused ? 
         <Camera
           ref={ref => setCameraRef(ref)}
           style={{    flex: 1, position: 'absolute', width : '100%', height : '100%',
-            backgroundColor: "#000000",
+            backgroundColor: "#ffff",
             aspectRatio: height / width}}
           ratio={height.toString() + ':' + width.toString()}
           type={cameraType}
