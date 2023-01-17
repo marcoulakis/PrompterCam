@@ -80,7 +80,7 @@ const CameraScreen = (props) => {
   }
   if(!cameraIsPermitted || !audioIsPermitted || !galleryIsPermitted){
     return (
-      <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
+      <View style={{flex: 1, alignItems: 'center', justifyContent: 'center', backgroundColor: "#000000"}}>
         <TouchableOpacity onPress={openAppSettings} style={{alignItems: 'center', justifyContent: 'center'}}>
           <Text style={styles.permissionsTitle}>{t("translation.permissions-title")}</Text>
           <Text style={styles.permissionsSubtitle}>{t("translation.permissions-subtitle")}</Text>
@@ -334,25 +334,25 @@ const styles = StyleSheet.create({
   permissionsTitle: {
     textAlign: 'center',
     fontSize: 34, 
-    color: '#000000A0',
+    color: '#ffffff',
     fontWeight: 'bold',
   },
   permissionsSubtitle:{
     textAlign: 'center',
     fontSize: 18, 
-    color: '#000000A0',
+    color: '#ffffff',
     marginBottom: 30,
   },
   permissionsItems: {
     textAlign: 'center',
     fontSize: 20, 
-    color: '#000000A0',
+    color: '#ffffff',
     marginHorizontal: 30,
   },
   goToSettings: {
     textAlign: 'center',
     fontSize: 20, 
-    color: '#000000A0',
+    color: '#ffffff',
     fontWeight: 'bold'
   },
   galleryItem:{

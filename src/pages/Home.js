@@ -35,7 +35,7 @@ const FlatListItemSeparator = () => {
       style={{
         height: 1,
         width: '100%',
-        backgroundColor: '#888888',
+        backgroundColor: '#818181',
       }}
     />
   );
@@ -200,18 +200,18 @@ const Home= () => {
               <Text
                 style={styles.settingsText}>{`${t("translation.text-size")}: ${fontSize}`}</Text>
               <View style={styles.sliderView}>
-                <Text style={{fontSize: 10, marginRight: 10}}>A</Text>
+                <Text style={{fontSize: 10, marginRight: 10, color: "#ffffff", fontWeight:'bold'}}>A</Text>
                 <Slider
                   style={{width: 250, height: 40}}
                   minimumValue={20}
                   maximumValue={100}
-                  minimumTrackTintColor="#bdbdbd"
-                  maximumTrackTintColor="#000000"
+                  minimumTrackTintColor="#818181"
+                  maximumTrackTintColor="#ffffff"
                   onValueChange={value => setFontSize(value)}
                   step={1}
                   value={fontSize}
                 />
-                <Text style={{fontSize: 25, marginLeft: 10}}>A</Text>
+                <Text style={{fontSize: 25, marginLeft: 10, color: "#ffffff", fontWeight:'bold'}}>A</Text>
               </View>
             </View>
 
@@ -228,7 +228,7 @@ const Home= () => {
                         hideSliders={true}
                         hideControls={true}
                     />
-                    <View style={{flex: 1, backgroundColor: color, borderColor: "#000000", borderWidth:5, marginVertical: 30, marginLeft:15}}>
+                    <View style={{flex: 1, borderRadius: 40, backgroundColor: color, borderColor: "#ffffff", borderWidth:3, marginVertical: 30, marginLeft:15}}>
                     </View>
               </View>
             </View>
@@ -244,8 +244,8 @@ const Home= () => {
                   style={{width: 250, height: 40}}
                   minimumValue={2}
                   maximumValue={100}
-                  minimumTrackTintColor="#bdbdbd"
-                  maximumTrackTintColor="#000000"
+                  minimumTrackTintColor="#818181"
+                  maximumTrackTintColor="#ffffff"
                   onValueChange={value => setScrollSpeed(value)}
                   step={1}
                   value={scrollSpeed}
@@ -287,17 +287,17 @@ const styles = StyleSheet.create({
     modalView: {
       margin: 10,
       marginTop: 100,
-      backgroundColor: 'white',
+      backgroundColor: '#161618',
       borderRadius: 5,
       padding: 15,
       alignItems: 'center',
-      shadowColor: '#000',
+      shadowColor: '#fff',
       shadowOffset: {
         width: 0,
         height: 2,
       },
       shadowOpacity: 0.25,
-      shadowRadius: 4,
+      shadowRadius: 10,
       elevation: 5,
     },
     button: {
@@ -307,27 +307,31 @@ const styles = StyleSheet.create({
       height: 40,
     },
     buttonSave: {
-      backgroundColor: '#000000',
+      backgroundColor: '#34c759',
     },
     buttonCancel: {
-      backgroundColor: '#888888',
+      backgroundColor: '#ff3b30',
     },
     textStyle: {
-      color: 'white',
+      color: '#ffffff',
       fontWeight: 'bold',
       textAlign: 'center',
     },
     modalTextInput: {
       marginBottom: 15,
+      padding: 10,
       height: 150,
       width: 300,
       margin: 12,
-      borderWidth: 1,
-      borderColor: '#888888',
+      borderWidth: 3,
+      borderRadius: 25,
+      borderColor: '#818181',
+      color: '#ffffff',
     },
     settingsText: {
       textAlign: 'center',
       fontSize: 18,
+      color: '#ffffff',
     },
     settingsSection: {
       paddingTop: 10,
