@@ -32,7 +32,7 @@ const styles = StyleSheet.create({
 const PrompterContainer = (props) => {
   const {t, i18n} = useTranslation();
 
-  console.log(props)
+  // console.log(props)
   const MainColor = props.color;
 
   const refContainer = useRef(null);
