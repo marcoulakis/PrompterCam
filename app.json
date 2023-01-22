@@ -3,7 +3,7 @@
     "name": "PrompterCam",
     "slug": "teleprompter",
     "icon": "./assets/icon.png",
-    "version": "1.0.3",
+    "version": "1.2.0",
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
@@ -17,7 +17,7 @@
       "**/*"
     ],
     "ios": {
-      "buildNumber": "5",
+      "buildNumber": "6",
       "supportsTablet": true,
       "bundleIdentifier": "teleprompter.camera",
       "infoPlist": {
@@ -28,7 +28,7 @@
       }
     },
     "android": {
-      "versionCode": 5,
+      "versionCode": 6,
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"

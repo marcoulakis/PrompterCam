@@ -1,4 +1,4 @@
-import { StyleSheet, Text, TouchableOpacity, View, Image, Linking, Dimensions, SafeAreaView } from 'react-native';
+import { StyleSheet, Text, TouchableOpacity, View, Image, Linking, Platform, Dimensions, SafeAreaView } from 'react-native';
 import React, { useEffect, useState} from 'react';
 import { Camera } from 'expo-camera';
 import { Audio } from 'expo-av';
@@ -37,38 +37,42 @@ const CameraScreen = (props) => {
   const [ isCameraReady, setIsCameraReady ] = useState(false);
   const [ flashIcons, setFlashIcons ] = useState("flash-off");
   const [ recordIcon, setRecordIcon ] = useState("no")
-  const [ orientation, setOrientation ] = useState(ScreenOrientation.Orientation.LANDSCAPE_RIGHT);
-
- 
+  const [ isLoaded, setIsLoaded ] = useState(false);
+  const [ lockIcon, setLockIcon ] = useState("screen-rotation");
  
   const isFocused = useIsFocused()
 
-  const defineOrientation = async () => {
-      if(orientation === ScreenOrientation.Orientation.PORTRAIT_UP || orientation === ScreenOrientation.Orientation.PORTRAIT_DOWN){
-        setOrientation(ScreenOrientation.Orientation.LANDSCAPE_LEFT);
-        await ScreenOrientation.lockAsync(ScreenOrientation.OrientationLock.LANDSCAPE_LEFT);
-        setHeight(9)
-        setWidth(16)
-      }else if(orientation === ScreenOrientation.Orientation.LANDSCAPE_LEFT){
-        setOrientation(ScreenOrientation.Orientation.LANDSCAPE_RIGHT);
-        await ScreenOrientation.lockAsync(ScreenOrientation.OrientationLock.LANDSCAPE_RIGHT);
-        setHeight(9)
-        setWidth(16)
-      }else if(orientation === ScreenOrientation.Orientation.LANDSCAPE_RIGHT){
-        setOrientation(ScreenOrientation.Orientation.PORTRAIT_UP);
-        await ScreenOrientation.lockAsync(ScreenOrientation.OrientationLock.PORTRAIT_UP);
-        setHeight(16)
-        setWidth(9)
-      }
+  async function changeScreenOrientation() {
+    if(!isLoaded){
+      await ScreenOrientation.lockAsync(ScreenOrientation.OrientationLock.PORTRAIT_UP);
+      await ScreenOrientation.unlockAsync()
+    }
+  }
 
-    } 
+  const lockAndUnlockScreen = () => {
+    if(lockIcon === "screen-lock-rotation"){
+      setLockIcon("screen-rotation")
+      ScreenOrientation.unlockAsync()
+    }else{
+      ScreenOrientation.lockAsync(ScreenOrientation.OrientationLock.PORTRAIT_UP)
+      setLockIcon("screen-lock-rotation")
+    }
+  } 
 
   useEffect(() => {
-    (
-      async() => {
-
-      defineOrientation();
-
+    (async() => {
+      lockAndUnlockScreen();
+      // changeScreenOrientation();
+      Dimensions.addEventListener('change', ({window:{width,height}})=>{
+          setIsLoaded(true)
+          if (width < height) {
+            setHeight(16)
+            setWidth(9)
+          } else {
+            setHeight(9)
+            setWidth(16)        
+          }  
+        })
       const cameraStatus = await Camera.requestCameraPermissionsAsync();
       setCameraIsPermitted(cameraStatus.status == 'granted');
 
@@ -123,6 +127,10 @@ const CameraScreen = (props) => {
       stopVideo();
     }
   }
+
+  console.log(height)
+  console.log(width)
+
   const recordVideo = async () =>{
     if(cameraRef){
       try {
@@ -182,112 +190,109 @@ const CameraScreen = (props) => {
   }
 
   return (
-    <SafeAreaView   style={{flex: 1, flexDirection: height > width ? 'column' : "row-reverse", backgroundColor: "#161618"}}>
-        <View style={styles.topToolBarContainer}>
-          <View style={{flex: 1, flexDirection: height > width ? 'row' : "column", justifyContent: 'space-between'}}> 
-          <View style={{height: height < width ? Dimensions.get("window").scale * 45 : 30,justifyContent: 'center'}}>
-            <TouchableOpacity 
-              style={{height: 40,width: 30,justifyContent: 'center'}}
-              onPress={() => cameraSwitch()}
-              accessibilityLabel={t("translation.flip")}
-            >
-              <Icon
-                name={"flip-camera-ios"}
-                type='material'
-                color={MainColor}
-                size={30}
-              />
-            </TouchableOpacity>
-          </View>
-          <View style={{height: height < width ? Dimensions.get("window").scale * 45 : 30,width: 30,justifyContent: 'center'}}>
-            <TouchableOpacity 
-              style={{height: 40,width: 30,justifyContent: 'center'}}
-              onPress={() => defineOrientation()}
-              accessibilityLabel={t("translation.screen-rotate-on")}
-            >
-              <Icon
-                name="screen-rotation"
-                type='material'
-                color={MainColor}
-                size={30}
-              />
-            </TouchableOpacity>
-          </View>
-          <View style={{height: height < width ? Dimensions.get("window").scale * 45 : 30,width: 30,justifyContent: 'center'}}>
-            <TouchableOpacity 
-              style={{height: 40,width: 30,justifyContent: 'center'}}
-              onPress={() => flashSwitch()}
-              disabled={cameraType == Camera.Constants.Type.front}
-            >
-              <Icon
-                name={flashIcons}
-                type='material'
-                color={MainColor}
-                size={30}
-              />
-            </TouchableOpacity>
-          </View>
-
-          </View>
-        </View>
-      {isFocused ? 
-        <Camera
-          ref={ref => setCameraRef(ref)}
-          style={{flex: 1, resizeMethod: "resize", height: height < width ? Dimensions.get("screen").scale * 145: "auto"}}
-          ratio={height.toString() + ':' + width.toString()}
-          type={cameraType}
-          flashMode={cameraFlashMode}
-          onCameraReady={() => setIsCameraReady(true)}
+  <View style={{flex: 1, flexDirection: "column", backgroundColor: "#161618"}}>
+  <SafeAreaView style={styles.topToolBarContainer}>
+    <View style={{flex: 1, flexDirection: "row",marginTop: "1.5%", justifyContent: 'space-around'}}> 
+      <View style={{height: "2%", width: 40,justifyContent: 'center'}}>
+        <TouchableOpacity 
+          style={{height: 40,width: 40,justifyContent: 'center'}}
+          onPress={() => cameraSwitch()}
+          accessibilityLabel={t("translation.flip")}
         >
-
-        <PrompterContainer text={props.route.params.text} color={MainColor} scrollSpeed={props.route.params.scrollSpeed} fontSize={props.route.params.fontSize} style={{
-          position: 'relative',
-          flex: 1,
-          flexDirection: 'column',
-        }}/>
-
-        </Camera>
-      : null}
-        <View style={{ flexDirection: height > width ? 'row' : "column", justifyContent: 'space-around', marginVertical: 10, width: height < width ?  Dimensions.get("window").scale * 20 : "100%", left: height < width ?  Dimensions.get("window").scale * 10 : "auto", height:  height < width ?  Dimensions.get("window").scale * 155 : "auto"}}>
-          
-          <View style={styles.container}></View>
-          <View style={styles.recordButtonContainer}>
-            <TouchableOpacity 
-              disabled={!isCameraReady} 
-              style={styles.recordButtonOutline}
-              onPress={() => recordSwitch()}
-              accessibilityLabel={recordIcon === "no" ? t("translation.record") : t("translation.stop")}
-            >
-              {   
-                recordIcon === "no" ? 
-                <View
-                  style={styles.recordButton}
-                />
-                :
-                <Icon
-                name={recordIcon}
-                type='material'
-                color='#FF4040'
-                size={50}
-                />
-              }
-            </TouchableOpacity>
-          </View>
-          <View style={{flex: 1, marginVertical: height < width ? Dimensions.get("window").scale * 10 : 9,}}>
-            <TouchableOpacity 
-              style={styles.galleryItem}
-              onPress={() => pickFromGallery()}
-              accessibilityLabel={t("translation.gallery")}
-            >
-              {galleryItems[0] == undefined ?
-                <></>
-                : 
-                <Image style={styles.galleryItemPhoto} source={{uri: galleryItems[0].uri}}/>
-              }
-            </TouchableOpacity>
-          </View>
-        </View>
-    </SafeAreaView>
+          <Icon
+            name={"flip-camera-ios"}
+            type='material'
+            color={MainColor}
+            size={30}
+          />
+        </TouchableOpacity>
+      </View>
+      <View style={{height: "2%", width: 40,justifyContent: 'center'}}>
+        <TouchableOpacity 
+          style={{height: 40,width: 40,justifyContent: 'center'}}
+          onPress={() => lockAndUnlockScreen()}
+          accessibilityLabel={t("translation.screen-rotate-on")}
+        >
+          <Icon
+            name={lockIcon}
+            type='material'
+            color={MainColor}
+            size={30}
+          />
+        </TouchableOpacity>
+      </View>
+      <View style={{height: "2%", width: 40,justifyContent: 'center'}}>
+        <TouchableOpacity 
+          style={{height: 40,width: 40,justifyContent: 'center'}}
+          onPress={() => flashSwitch()}
+          disabled={cameraType == Camera.Constants.Type.front}
+        >
+          <Icon
+            name={flashIcons}
+            type='material'
+            color={MainColor}
+            size={30}
+          />
+        </TouchableOpacity>
+      </View>
+    </View>
+  </SafeAreaView>
+  {isFocused ? 
+  <Camera
+    ref={ref => setCameraRef(ref)}
+    style={{flex: 1, resizeMethod: "resize", width: height < width ? "56,25%" : "100%", height: height < width ? "100%" : "56,25%", marginHorizontal: height < width ? "21,875%" : "auto", marginVertical: "auto", backgroundColor: "#ff0"}}
+    ratio={height.toString() + ':' + width.toString()}
+    type={cameraType}
+    flashMode={cameraFlashMode}
+    onCameraReady={() => setIsCameraReady(true)}
+  >
+    <PrompterContainer text={props.route.params.text} color={MainColor} scrollSpeed={props.route.params.scrollSpeed} fontSize={props.route.params.fontSize} style={{
+      position: 'relative',
+      flex: 1,
+      flexDirection: 'column',
+      marginHorizontal: "2.5%"
+    }}/>
+  </Camera>
+  : null}
+  <View style={{ flexDirection: "row", justifyContent: 'space-around', marginVertical: "1%", width: "auto", height: "auto"}}>
+    <View style={styles.container}></View>
+    <View style={styles.recordButtonContainer}>
+      <TouchableOpacity 
+        disabled={!isCameraReady} 
+        style={styles.recordButtonOutline}
+        onPress={() => recordSwitch()}
+        accessibilityLabel={recordIcon === "no" ? t("translation.record") : t("translation.stop")}
+      >
+        {   
+          recordIcon === "no" ? 
+          <View
+            style={styles.recordButton}
+          />
+          :
+          <Icon
+          name={recordIcon}
+          type='material'
+          color='#FF4040'
+          size={50}
+          />
+        }
+      </TouchableOpacity>
+    </View>
+    <View style={{flex: 1, marginVertical: 9,}}>
+      <TouchableOpacity 
+        style={styles.galleryItem}
+        onPress={() => pickFromGallery()}
+        accessibilityLabel={t("translation.gallery")}
+      >
+        {galleryItems[0] == undefined ?
+          <></>
+          : 
+          <Image style={styles.galleryItemPhoto} source={{uri: galleryItems[0].uri}}/>
+        }
+      </TouchableOpacity>
+    </View>
+  </View>
+</View>
   );
 };
 
@@ -297,9 +302,7 @@ export default CameraScreen;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-
   },
-
   bottomToolBarContainer:{
     position: 'relative',
     flexDirection: 'row',  
@@ -310,10 +313,11 @@ const styles = StyleSheet.create({
     flexDirection: 'row',  
     alignItems: 'center',
     marginHorizontal: 30,
-    marginVertical: 10
+    // paddingRight: 20, // ipad horizontal
+    marginTop: 10
   },
   recordButtonContainer:{
-    marginHorizontal: 30,
+    // marginRight: "20%", // ipad horizontal
     alignItems: 'center',
   },
   recordButton:{
@@ -365,7 +369,8 @@ const styles = StyleSheet.create({
     overflow: 'hidden',
     height: 50,
     width: 50,
-    marginHorizontal: 5
+    // marginHorizontal: 20 
+       marginHorizontal: "25%" 
   },
   galleryItemPhoto:{
     height: 50,
