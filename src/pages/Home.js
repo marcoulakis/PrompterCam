@@ -11,7 +11,8 @@ import {
   Button,
   Platform,
   TouchableOpacity,
-  StatusBar
+  StatusBar,
+  SafeAreaView
 } from 'react-native';
 import Slider from '@react-native-community/slider';
 import {useNavigation} from '@react-navigation/native';
@@ -150,7 +151,7 @@ const Home= () => {
   };
 
   return (
-    <View style={styles.centeredView}>
+    <SafeAreaView style={styles.centeredView}>
       <StatusBar
         animated={true}
         barStyle={"light-content"}
@@ -268,7 +269,7 @@ const Home= () => {
         keyExtractor={(item, index) => `key${index}`}
         ItemSeparatorComponent={FlatListItemSeparator}
       />
-    </View>
+    </SafeAreaView>
   );
 };
 

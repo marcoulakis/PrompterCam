@@ -42,26 +42,26 @@ const CameraScreen = (props) => {
  
   const isFocused = useIsFocused()
 
-  async function changeScreenOrientation() {
-    if(!isLoaded){
-      await ScreenOrientation.lockAsync(ScreenOrientation.OrientationLock.PORTRAIT_UP);
-      await ScreenOrientation.unlockAsync()
-    }
-  }
+  // async function changeScreenOrientation() {
+  //   if(!isLoaded){
+  //     await ScreenOrientation.lockAsync(ScreenOrientation.OrientationLock.PORTRAIT_UP);
+  //     await ScreenOrientation.unlockAsync()
+  //   }
+  // }
 
-  const lockAndUnlockScreen = () => {
-    if(lockIcon === "screen-lock-rotation"){
-      setLockIcon("screen-rotation")
-      ScreenOrientation.unlockAsync()
-    }else{
-      ScreenOrientation.lockAsync(ScreenOrientation.OrientationLock.PORTRAIT_UP)
-      setLockIcon("screen-lock-rotation")
-    }
-  } 
+  // const lockAndUnlockScreen = () => {
+  //   if(lockIcon === "screen-lock-rotation"){
+  //     setLockIcon("screen-rotation")
+  //     ScreenOrientation.unlockAsync()
+  //   }else{
+  //     ScreenOrientation.lockAsync(ScreenOrientation.OrientationLock.PORTRAIT_UP)
+  //     setLockIcon("screen-lock-rotation")
+  //   }
+  // } 
 
   useEffect(() => {
     (async() => {
-      lockAndUnlockScreen();
+      // lockAndUnlockScreen();
       // changeScreenOrientation();
       Dimensions.addEventListener('change', ({window:{width,height}})=>{
           setIsLoaded(true)
@@ -192,7 +192,7 @@ const CameraScreen = (props) => {
   return (
   <View style={{flex: 1, flexDirection: "column", backgroundColor: "#161618"}}>
   <SafeAreaView style={styles.topToolBarContainer}>
-    <View style={{flex: 1, flexDirection: "row",marginTop: "1.5%", justifyContent: 'space-around'}}> 
+    <View style={{flex: 1, flexDirection: "row",marginTop: "3%", justifyContent: 'space-around'}}> 
       <View style={{height: "2%", width: 40,justifyContent: 'center'}}>
         <TouchableOpacity 
           style={{height: 40,width: 40,justifyContent: 'center'}}
@@ -207,20 +207,7 @@ const CameraScreen = (props) => {
           />
         </TouchableOpacity>
       </View>
-      <View style={{height: "2%", width: 40,justifyContent: 'center'}}>
-        <TouchableOpacity 
-          style={{height: 40,width: 40,justifyContent: 'center'}}
-          onPress={() => lockAndUnlockScreen()}
-          accessibilityLabel={t("translation.screen-rotate-on")}
-        >
-          <Icon
-            name={lockIcon}
-            type='material'
-            color={MainColor}
-            size={30}
-          />
-        </TouchableOpacity>
-      </View>
+
       <View style={{height: "2%", width: 40,justifyContent: 'center'}}>
         <TouchableOpacity 
           style={{height: 40,width: 40,justifyContent: 'center'}}
