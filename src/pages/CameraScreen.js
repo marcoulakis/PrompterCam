@@ -63,7 +63,7 @@ const CameraScreen = (props) => {
     (async() => {
       // lockAndUnlockScreen();
       // changeScreenOrientation();
-      Dimensions.addEventListener('change', ({window:{width,height}})=>{
+      await Dimensions.addEventListener('change', ({window:{width,height}})=>{
           setIsLoaded(true)
           if (width < height) {
             setHeight(16)

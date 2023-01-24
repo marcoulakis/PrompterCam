@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useLayoutEffect } from 'react';
 import {
-  Alert,
   Modal,
   StyleSheet,
   Text,
@@ -161,7 +160,6 @@ const Home= () => {
         transparent
         visible={addModalVisible}
         onRequestClose={() => {
-          Alert.alert('Modal has been closed.');
           setAddModalVisible(!addModalVisible);
         }}>
         <View style={styles.centeredView}>
@@ -192,7 +190,6 @@ const Home= () => {
         transparent
         visible={settingsModalVisible}
         onRequestClose={() => {
-          Alert.alert('Modal has been closed.');
           setSettingsModalVisible(!addModalVisible);
         }}>
         <View style={styles.centeredView}>
@@ -344,7 +341,7 @@ const styles = StyleSheet.create({
     },
     headerButton: {
       alignItems: 'center',
-      backgroundColor: '#ffffff',
+      color: '#ffffff',
       padding: 10,
     },
     headerButtonText: {color: '#ffffff', fontSize: 18, fontWeight: '800'},
