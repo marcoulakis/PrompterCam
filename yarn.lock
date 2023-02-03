@@ -3684,6 +3684,14 @@ expo-constants@~14.0.0, expo-constants@~14.0.2:
     "@expo/config" "~7.0.2"
     uuid "^3.3.2"
 
+expo-constants@~14.1.0:
+  version "14.1.0"
+  resolved "https://registry.yarnpkg.com/expo-constants/-/expo-constants-14.1.0.tgz#2f84c86b33729ee7fdfcf8166779aaf909948721"
+  integrity sha512-VW8LkjEPBuL+LYu2ed7ITn8RJ/wYMs6PyiNExpY5dg3CzbDifBzm9lcqt9dTI6V/z4lyGAT/Hus6rvpeRB6sNg==
+  dependencies:
+    "@expo/config" "~7.0.2"
+    uuid "^3.3.2"
+
 expo-eas-client@~0.4.0:
   version "0.4.1"
   resolved "https://registry.yarnpkg.com/expo-eas-client/-/expo-eas-client-0.4.1.tgz#4ccdafb5faeac97394fb3fa4c777ec22b2017f1d"
