@@ -6,6 +6,7 @@ import {
   View,
   SafeAreaView,
   TouchableOpacity,
+  Platform
 } from 'react-native';
 import {getValue, fontSizeKey, scrollingSpeedKey} from '../helpers';
 import Slider from '@react-native-community/slider';
@@ -92,7 +93,7 @@ const PrompterContainer = (props) => {
         style={{ position: 'absolute', top: "50%",  zIndex: 100}}
         accessibilityLabel={t("translation.text-size")}
       >
-        <View style={{width: 150, height: 40, position: 'absolute', left: -40, zIndex: 100, transform: [{ rotate: '-90deg' }]}}>
+        <View style={{width: 150, height: 40, position: 'absolute', left: Platform.OS === "ios" ? "-80%" : "-60%" , zIndex: 150, transform: [{ rotate: '-90deg' }]}}>
           <Slider
           accessibilityLabel={t("translation.text-size")}
             minimumValue={30}
@@ -114,7 +115,7 @@ const PrompterContainer = (props) => {
         <View 
           style={{ position: 'absolute', top: "50%",right: 0,  zIndex: 100}}
         >
-          <View style={{width: 150, height: 40, position: 'absolute', right: -40, zIndex: 100, transform: [{ rotate: '-90deg' }]}}>
+          <View style={{width: 150, height: 40, position: 'absolute', right:  Platform.OS === "ios" ? "-80%" : "-100%", zIndex: 150, transform: [{ rotate: '-90deg' }]}}>
             <Slider
               accessibilityLabel={t("translation.scroll-speed")}
               minimumValue={10}
