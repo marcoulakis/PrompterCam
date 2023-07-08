@@ -11,7 +11,9 @@
     <img src="https://raw.githubusercontent.com/marcoulakis/PrompterCam/main/.github/images/logo.png" alt="logo" width="150" />
     <p align="center">
       <img src="https://raw.githubusercontent.com/marcoulakis/PrompterCam/main/.github/images/app-store.png" alt="App Store" width="185" />
-      <img src="https://raw.githubusercontent.com/marcoulakis/PrompterCam/main/.github/images/google-play.png" alt="Google Play" width="200" />
+      <a href="https://play.google.com/store/apps/details?id=teleprompter.camera">
+        <img src="https://raw.githubusercontent.com/marcoulakis/PrompterCam/main/.github/images/google-play.png" alt="Google Play" width="200" />
+      </a>
     </div>
   </p>
 </div>
