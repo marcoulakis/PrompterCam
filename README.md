@@ -122,13 +122,9 @@ yarn run eject
 ## Learn More
 
 To learn more about React Native and Expo, you can refer to the following resources:
-
-- [React Native Documentation](https://reactnative.dev/docs)
+- [React Native Documentation](https://reactnative.dev/docs/getting-started)
 - [Expo Documentation](https://docs.expo.io)
 - [Expo CLI GitHub Repository](https://github.com/expo/expo-cli)
-
-
-
 
 ## License
 
