@@ -13,7 +13,7 @@
     "@react-native-community/slider": "4.2.4",
     "@react-navigation/native": "^6.0.6",
     "@react-navigation/native-stack": "^6.2.5",
-    "expo": "^47.0.0",
+    "expo": "^49.0.0",
     "expo-app-loading": "~2.1.1",
     "expo-av": "~13.0.2",
     "expo-camera": "~13.1.0",
