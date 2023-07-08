@@ -59,3 +59,79 @@ To run PrompterCam on your device, please ensure that you meet the following com
  Feel free to explore the app further and customize it to suit your own production needs.
 
 Happy recording with PrompterCam!
+
+---
+
+# For developers
+
+## Prerequisites
+
+Before you can start using this repository, ensure that you have the following installed:
+
+- Node.js
+- Expo CLI
+- Yarn
+
+## Getting Started
+
+To get started with this project, follow these steps:
+
+1. Clone the repository to your local machine:
+```
+git clone https://github.com/marcoulakis/PrompterCam.git
+```
+
+2. Navigate to the project directory:
+```
+cd PrompterCam
+```
+
+3. Install the project dependencies:
+```
+yarn install
+```
+
+## Available Scripts
+
+In the project directory, you can run the following scripts:
+
+- `start`: Starts the Expo development server with the dev client.
+```
+yarn start
+```
+
+- `android`: Runs the app on an Android device or emulator.
+```
+yarn run android
+```
+
+- `ios`: Runs the app on an iOS simulator or connected device.
+```
+yarn run ios
+```
+
+- `web`: Starts the Expo development server for web development.
+```
+npm run web
+```
+
+- `eject`: Ejects the Expo project and provides a regular React Native project structure.
+```
+yarn run eject
+```
+
+
+## Learn More
+
+To learn more about React Native and Expo, you can refer to the following resources:
+
+- [React Native Documentation](https://reactnative.dev/docs)
+- [Expo Documentation](https://docs.expo.io)
+- [Expo CLI GitHub Repository](https://github.com/expo/expo-cli)
+
+
+
+
+## License
+
+This project is licensed under the [MIT License](LICENSE).
