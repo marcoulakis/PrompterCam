@@ -2,15 +2,21 @@
 
 
 <div>
-  <img src="https://raw.githubusercontent.com/marcoulakis/PrompterCam/main/.github/images/all-bg.png" alt="Scrennshot-of-Home-dark" height="400" align="right"/>
+  <a href="#screenshot">
+    <img src="https://raw.githubusercontent.com/marcoulakis/PrompterCam/main/.github/images/all-bg.png" alt="Scrennshot-of-Home-dark" height="400" align="right"/>
+  </a>
   
   
   <h2>Overview</h2>
   <p align="left">PrompterCam is a teleprompter app with a built-in camera for recording videos while reading scripts. With this app, you can create professional videos with your phone while maintaining a seamless workflow.</p>
   <p align="center">
-    <img src="https://raw.githubusercontent.com/marcoulakis/PrompterCam/main/.github/images/logo.png" alt="logo" width="150" />
+    <a href="#logo">
+      <img src="https://raw.githubusercontent.com/marcoulakis/PrompterCam/main/.github/images/logo.png" alt="logo" width="150" />
+    </a>
     <p align="center">
-      <img src="https://raw.githubusercontent.com/marcoulakis/PrompterCam/main/.github/images/app-store.png" alt="App Store" width="185" />
+      <a href="#soon">
+        <img src="https://raw.githubusercontent.com/marcoulakis/PrompterCam/main/.github/images/app-store.png" alt="App Store" width="185" />
+      </a>
       <a href="https://play.google.com/store/apps/details?id=teleprompter.camera">
         <img src="https://raw.githubusercontent.com/marcoulakis/PrompterCam/main/.github/images/google-play.png" alt="Google Play" width="200" />
       </a>
