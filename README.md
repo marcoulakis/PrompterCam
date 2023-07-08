@@ -54,8 +54,6 @@ To run PrompterCam on your device, please ensure that you meet the following com
 > device's operating system version and update to the latest iOS and Android version
 > if necessary to ensure compatibility with the app.
 
----
-
  Feel free to explore the app further and customize it to suit your own production needs.
 
 Happy recording with PrompterCam!
