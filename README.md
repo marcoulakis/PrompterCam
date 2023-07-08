@@ -8,11 +8,11 @@
   <h2>Overview</h2>
   <p align="left">PrompterCam is a teleprompter app with a built-in camera for recording videos while reading scripts. With this app, you can create professional videos with your phone while maintaining a seamless workflow.</p>
   <p align="center">
-    <div>
-      <img src="https://raw.githubusercontent.com/marcoulakis/PrompterCam/main/.github/images/app-store.png" alt="App Store" width="200" />
+    <img src="https://raw.githubusercontent.com/marcoulakis/PrompterCam/main/.github/images/logo.png" alt="logo" width="150" />
+    <p align="center">
+      <img src="https://raw.githubusercontent.com/marcoulakis/PrompterCam/main/.github/images/app-store.png" alt="App Store" width="185" />
       <img src="https://raw.githubusercontent.com/marcoulakis/PrompterCam/main/.github/images/google-play.png" alt="Google Play" width="200" />
     </div>
-    <img src="https://raw.githubusercontent.com/marcoulakis/PrompterCam/main/.github/images/logo.png" alt="logo" width="150" />
   </p>
 </div>
 
