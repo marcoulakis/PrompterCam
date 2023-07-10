@@ -3721,10 +3721,10 @@ expo-manifests@~0.4.0:
   dependencies:
     expo-json-utils "~0.4.0"
 
-expo-media-library@~15.0.0:
-  version "15.0.0"
-  resolved "https://registry.yarnpkg.com/expo-media-library/-/expo-media-library-15.0.0.tgz#12b05bb2c3cc209a08acbd2d3e35ba0a6a141003"
-  integrity sha512-BO17VEElQHf2kK45Vuqm4QtutWsT5X4clO8DjTp2BUNvmY+JgOTKsjPs1LIQcNaaum64u/Gfp3V4HV2a6JnHJg==
+expo-media-library@~15.3.0:
+  version "15.3.0"
+  resolved "https://registry.yarnpkg.com/expo-media-library/-/expo-media-library-15.3.0.tgz#d9257178d11d282df3be56a1ba06a4f9e9f4ef5e"
+  integrity sha512-kCBVyPMhI8BM5H1sZx+2Tku86vC7WU/7YeaabalsliPmjUbGUgBU0mV4xPWtf9Dycp7zgHOmmx+LNDh+BglRxw==
 
 expo-modules-autolinking@1.0.2:
   version "1.0.2"
