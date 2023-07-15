@@ -26,7 +26,7 @@
     "expo-media-library": "~15.0.0",
     "expo-screen-orientation": "~5.0.1",
     "expo-status-bar": "~1.4.2",
-    "expo-updates": "~0.15.6",
+    "expo-updates": "~0.18.0",
     "firebase": "^9.6.3",
     "i18next": "^21.6.6",
     "lottie-react-native": "5.1.4",
