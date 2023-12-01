@@ -50,7 +50,7 @@
     "react-redux": "^7.2.6",
     "redux-persist": "^6.0.0",
     "rn-vertical-slider": "^2.0.2",
-    "expo-splash-screen": "~0.17.5"
+    "expo-splash-screen": "~0.24.0"
   },
   "devDependencies": {
     "@babel/core": "^7.19.3"
